@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #3D7A5E;
+  --color-primary-dark: #2A5C44;
+  --color-primary-light: #EAF4EE;
+  --color-accent: #E8834A;
+  --color-text: #1E1E1C;
+  --color-muted: #6B6B68;
+  --color-bg: #FAFAF7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Noto Serif JP', serif;
+}

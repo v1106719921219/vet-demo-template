@@ -1,0 +1,39 @@
+{
+  "hospital": {
+    "name": "バウミュウ動物病院",
+    "name_kana": "バウミュウドウブツビョウイン",
+    "phone": "0436-41-1008",
+    "fax": "0436-41-1952",
+    "address": "〒290-0062 千葉県市原市八幡520",
+    "access": "JR内房線 八幡宿駅より徒歩7分（500m）",
+    "parking": "あり（無料）",
+    "website_url": "https://pya-bowmew.ssl-lolipop.jp/",
+    "google_rating": 4.2,
+    "review_count": 18,
+    "director_name": "町田 幸男",
+    "director_education": "東京農工大学 獣医科卒",
+    "animals": ["犬", "猫"],
+    "hours": {
+      "月": { "am": "9:00〜13:00", "pm": "15:30〜19:00" },
+      "火": { "am": "9:00〜13:00", "pm": "15:30〜19:00" },
+      "水": { "am": "9:00〜13:00", "pm": "15:30〜19:00" },
+      "木": { "am": "9:00〜13:00", "pm": null },
+      "金": { "am": "9:00〜13:00", "pm": "15:30〜19:00" },
+      "土": { "am": "9:00〜13:00", "pm": "15:30〜19:00" },
+      "日": { "am": "9:00〜13:00", "pm": null },
+      "祝": { "am": "9:00〜13:00", "pm": null }
+    },
+    "features": ["トリミング", "ペットホテル", "入院設備", "高度医療センター連携"],
+    "equipment": ["CT・MRI", "内視鏡", "デジタルX線", "超音波エコー", "猫専用待合室"],
+    "catchcopy": "日曜も祝日も、\n午前は休まず。\n市原市のかかりつけ動物病院。",
+    "subcopy": "千葉県市原市八幡｜犬・猫の診療\nJR八幡宿駅より徒歩7分",
+    "weakness_score": 82,
+    "weakness_details": {
+      "mobile": false,
+      "ssl": false,
+      "reservation_form": false,
+      "last_update_year": 2015,
+      "response_time_ms": 4200
+    }
+  }
+}

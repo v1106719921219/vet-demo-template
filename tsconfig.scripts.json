@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "lib": ["esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "target": "ES2020",
+    "outDir": ".scripts-dist",
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "include": ["scripts/**/*.ts", "src/lib/hospital.ts"]
+}
