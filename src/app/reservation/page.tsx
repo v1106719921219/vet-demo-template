@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import Link from 'next/link'
+import { Phone, MessageCircle, CalendarDays } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { HOSPITAL } from '@/lib/hospital'
@@ -78,16 +79,54 @@ export default function ReservationPage() {
       <Navbar />
       <main className="min-h-screen bg-bg pt-24 px-4 pb-20">
         <div className="mx-auto max-w-2xl">
-          <div className="mb-8 text-center">
-            <h1 className="font-serif text-2xl font-bold text-text-main sm:text-3xl">ご予約・お問い合わせ</h1>
-            <p className="mt-3 text-sm text-muted">
-              以下のフォームからご予約いただけます。<br />
-              お急ぎの場合はお電話（
-              <a href={`tel:${HOSPITAL.phone.replace(/-/g, '')}`} className="text-primary font-bold">
-                {HOSPITAL.phone}
+          <div className="mb-10 text-center">
+            <p className="text-xs font-medium uppercase tracking-widest text-primary">Contact</p>
+            <h1 className="mt-2 font-serif text-2xl font-bold text-text-main sm:text-3xl">ご予約・お問い合わせ</h1>
+            <div className="mx-auto mt-3 h-0.5 w-12 bg-primary" />
+            <p className="mt-4 text-sm text-muted">お気軽な方法でご連絡ください</p>
+          </div>
+
+          {/* 3択連絡方法 */}
+          <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {/* 電話 */}
+            <a
+              href={`tel:${HOSPITAL.phone.replace(/-/g, '')}`}
+              className="group flex flex-col items-center gap-2 rounded-2xl border border-primary-light bg-white p-5 text-center shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+            >
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary-light">
+                <Phone size={20} className="text-primary" />
+              </div>
+              <p className="text-xs font-bold text-text-main">今すぐ電話</p>
+              <p className="text-xs text-primary font-bold">{HOSPITAL.phone}</p>
+              <p className="text-[11px] text-muted">診療時間内受付</p>
+            </a>
+
+            {/* LINE */}
+            {HOSPITAL.line_url && (
+              <a
+                href={HOSPITAL.line_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center gap-2 rounded-2xl border border-[#06C755]/30 bg-white p-5 text-center shadow-sm transition-all hover:shadow-md hover:-translate-y-0.5"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#06C755]/10">
+                  <MessageCircle size={20} className="text-[#06C755]" />
+                </div>
+                <p className="text-xs font-bold text-text-main">LINEで相談</p>
+                <p className="text-xs text-[#06C755] font-bold">LINE公式アカウント</p>
+                <p className="text-[11px] text-muted">24時間メッセージ可</p>
               </a>
-              ）にてご連絡ください。
-            </p>
+            )}
+
+            {/* フォーム */}
+            <div className="flex flex-col items-center gap-2 rounded-2xl border-2 border-primary bg-primary/5 p-5 text-center">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-primary/10">
+                <CalendarDays size={20} className="text-primary" />
+              </div>
+              <p className="text-xs font-bold text-primary">Webフォーム予約</p>
+              <p className="text-xs text-primary font-bold">↓ 下のフォームへ</p>
+              <p className="text-[11px] text-muted">24時間受付</p>
+            </div>
           </div>
 
           <form

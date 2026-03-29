@@ -17,6 +17,7 @@ interface DayScheduleInput {
 }
 
 interface HospitalInput {
+  demo_contact_email?: string
   hospital: {
     name: string
     name_kana?: string
@@ -95,6 +96,22 @@ export interface WeaknessDetails {
   response_time_ms: number
 }
 
+export interface ComparisonItem {
+  label: string
+  before: string
+  after: string
+  impact?: string
+  stat?: string
+  active: boolean
+}
+
+export interface ComparisonSection {
+  headline: string
+  subtext: string
+  closing: string
+  items: ComparisonItem[]
+}
+
 export interface HospitalData {
   name: string
   phone: string
@@ -119,6 +136,7 @@ export interface HospitalData {
   reviews?: { text: string; author: string }[]
   equipment?: string[]
   weakness: WeaknessDetails
+  comparison?: ComparisonSection
   seo?: {
     title?: string
     description?: string
@@ -180,9 +198,15 @@ async function generateDemoSite(inputPath: string): Promise<string> {
   const projectName = `vet-demo-${slug}`
   console.log(`🚀 Vercel にデプロイ中... (project: ${projectName})`)
 
+  // DEMO_MODE と DEMO_CONTACT を build-env として渡す
+  const buildEnvArgs = [`--build-env NEXT_PUBLIC_DEMO_MODE=true`]
+  if (input.demo_contact_email) {
+    buildEnvArgs.push(`--build-env NEXT_PUBLIC_DEMO_CONTACT=${input.demo_contact_email}`)
+  }
+
   try {
     const result = execSync(
-      `vercel deploy --yes --name "${projectName}" --prod`,
+      `vercel deploy --yes --name "${projectName}" --prod ${buildEnvArgs.join(' ')}`,
       {
         encoding: 'utf-8',
         cwd: path.join(__dirname, '..'),
@@ -193,10 +217,15 @@ async function generateDemoSite(inputPath: string): Promise<string> {
     const url = result.trim().split('\n').pop() ?? ''
     console.log(`\n🎉 デモサイト生成完了！`)
     console.log(`🔗 URL: ${url}`)
+    console.log(`🔗 提案ページ: ${url}/demo`)
     console.log(`\n--- 営業メール用情報 ---`)
     console.log(`病院名: ${h.name}`)
     console.log(`電話: ${h.phone}`)
     console.log(`デモURL: ${url}`)
+    console.log(`提案ページ: ${url}/demo`)
+    if (input.demo_contact_email) {
+      console.log(`問い合わせ先: ${input.demo_contact_email}`)
+    }
 
     return url
   } catch (e) {

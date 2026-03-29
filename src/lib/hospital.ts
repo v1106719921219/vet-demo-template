@@ -1,6 +1,6 @@
 // ============================================================
 // このファイルのみ病院ごとに書き換えます
-// generate.ts が自動生成します
+// generate.ts が自動生成します（手動で編集しないでください）
 // ============================================================
 
 export type DaySchedule = { am: string; pm: string | null } | null
@@ -11,6 +11,22 @@ export interface WeaknessDetails {
   reservation_form: boolean
   last_update_year: number
   response_time_ms: number
+}
+
+export interface ComparisonItem {
+  label: string
+  before: string    // 現在のサイト（短く）
+  after: string     // 新サイト（短く）
+  impact?: string   // 「→ ○○になっている」という影響（サブテキスト）
+  stat?: string     // 添える数字データ
+  active: boolean
+}
+
+export interface ComparisonSection {
+  headline: string  // セクションの大見出し
+  subtext: string   // ヘッドラインの補足
+  closing: string   // 最後の一文
+  items: ComparisonItem[]
 }
 
 export interface HospitalData {
@@ -37,7 +53,11 @@ export interface HospitalData {
   reviews?: { text: string; author: string }[]
   equipment?: string[]
   weakness: WeaknessDetails
-  // SEO
+  // AIが生成したカスタム比較セクション（未設定時は自動生成フォールバック）
+  comparison?: ComparisonSection
+  line_url?: string
+  news?: { date: string; category: string; title: string }[]
+  partnerships?: { name: string; type: string }[]
   seo?: {
     title?: string
     description?: string
@@ -56,6 +76,8 @@ export const HOSPITAL: HospitalData = {
   access: 'JR内房線 八幡宿駅より徒歩7分（500m）',
   parking: 'あり（無料）',
   website_url: 'https://pya-bowmew.ssl-lolipop.jp/',
+  google_rating: 4.2,
+  review_count: 18,
   director: {
     name: '町田 幸男',
     title: '院長',
@@ -75,8 +97,9 @@ export const HOSPITAL: HospitalData = {
     祝: { am: '9:00〜13:00', pm: null },
   },
   features: ['トリミング', 'ペットホテル', '入院設備', '高度医療センター連携'],
-  catchcopy: '日曜も祝日も、\n午前は休まず。\n市原市のかかりつけ動物病院。',
-  subcopy: '千葉県市原市八幡｜犬・猫の診療\nJR八幡宿駅より徒歩7分',
+  line_url: 'https://lin.ee/bowmew', // デモ用プレースホルダー
+  catchcopy: '市原市の大切な命を、\nずっと守り続けてきた場所。',
+  subcopy: '日曜も祝日も午前診療。CT・MRI完備。\nどんな小さな悩みもお気軽にご相談ください。',
   reviews: [
     { text: '何でも相談できて安心できる先生です。代々お世話になっています。', author: '犬・柴犬のオーナー' },
     {
@@ -95,6 +118,54 @@ export const HOSPITAL: HospitalData = {
     reservation_form: false,
     last_update_year: 2015,
     response_time_ms: 4200,
+  },
+  comparison: {
+    headline: '今日、何人の飼い主が\n別の病院を選びましたか？',
+    subtext:
+      'スマートフォン検索が78%を占める今、サイトの第一印象で来院先を決める飼い主が増えています。',
+    closing: '先生の30年の信頼が、\nサイトのせいで届いていないかもしれません。',
+    items: [
+      {
+        label: 'スマホで見たとき',
+        before: '文字が崩れて読めない',
+        after: 'どの端末でも美しく表示',
+        impact: '→ 78%の飼い主に届いていない',
+        stat: 'スマホ検索は全体の78%',
+        active: true,
+      },
+      {
+        label: '夜中の問い合わせ',
+        before: '電話のみ・つながらない',
+        after: '24時間フォームで受付',
+        impact: '→ 翌朝には別の病院の患者に',
+        stat: '問い合わせの32%は診療時間外に発生',
+        active: true,
+      },
+      {
+        label: 'Googleでの見つけやすさ',
+        before: 'SSL非対応で検索順位が下がる',
+        after: 'SEO最適化・SSL完全対応',
+        impact: '→「市原市 動物病院」で見つからない',
+        stat: 'SSL非対応はGoogle検索で不利',
+        active: true,
+      },
+      {
+        label: '飼い主が感じる信頼感',
+        before: '最終更新2015年',
+        after: `${new Date().getFullYear()}年・常に最新情報`,
+        impact: '→「まだやってるの？」と思われる',
+        stat: undefined,
+        active: true,
+      },
+      {
+        label: '開いた瞬間の印象',
+        before: '表示4.2秒・53%がそのまま閉じる',
+        after: '1秒以内・ストレスゼロ',
+        impact: '→ ストレスで閉じられる',
+        stat: '読み込み3秒超で53%が離脱',
+        active: true,
+      },
+    ],
   },
   seo: {
     title: 'バウミュウ動物病院｜千葉県市原市のかかりつけ動物病院',

@@ -2,17 +2,18 @@ import type { Metadata } from 'next'
 import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google'
 import './globals.css'
 import { HOSPITAL } from '@/lib/hospital'
+import { DemoBanner } from '@/components/ui/DemoBanner'
 
 const notoSans = Noto_Sans_JP({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['300', '400', '500', '700'],
   variable: '--font-noto-sans',
   display: 'swap',
 })
 
 const notoSerif = Noto_Serif_JP({
   subsets: ['latin'],
-  weight: ['400', '700'],
+  weight: ['400', '600', '700'],
   variable: '--font-noto-serif',
   display: 'swap',
 })
@@ -33,7 +34,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja" className={`${notoSans.variable} ${notoSerif.variable}`}>
-      <body>{children}</body>
+      <body>
+        <DemoBanner />
+        {children}
+      </body>
     </html>
   )
 }

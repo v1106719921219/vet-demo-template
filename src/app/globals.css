@@ -3,13 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #3D7A5E;
-  --color-primary-dark: #2A5C44;
-  --color-primary-light: #EAF4EE;
-  --color-accent: #E8834A;
-  --color-text: #1E1E1C;
-  --color-muted: #6B6B68;
-  --color-bg: #FAFAF7;
+  --color-primary: #5C7A5E;
+  --color-primary-dark: #3A5C3C;
+  --color-primary-light: #EBF0E6;
+  --color-accent: #C4784A;
+  --color-accent-light: #F5E6D8;
+  --color-text: #2C2416;
+  --color-muted: #7A7060;
+  --color-bg: #FBF8F2;
+  --color-cream: #F5EDD8;
+  --color-wood: #C8A882;
 }
 
 html {
@@ -20,8 +23,27 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.02em;
+  line-height: 1.8;
 }
 
 h1, h2, h3 {
   font-family: 'Noto Serif JP', serif;
+  letter-spacing: 0.04em;
+}
+
+p {
+  letter-spacing: 0.03em;
+}
+
+/* 温かみのあるシャドウ */
+.warm-shadow {
+  box-shadow: 0 4px 24px rgba(44, 36, 22, 0.08);
+}
+
+.warm-shadow-lg {
+  box-shadow: 0 8px 40px rgba(44, 36, 22, 0.12);
 }

@@ -1,14 +1,18 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import TrustBar from '@/components/TrustBar'
+import Stats from '@/components/Stats'
 import Services from '@/components/Services'
-import DirectorMessage from '@/components/DirectorMessage'
-import BusinessHours from '@/components/BusinessHours'
-import PatientReviews from '@/components/PatientReviews'
+import ClinicPhotos from '@/components/ClinicPhotos'
 import Equipment from '@/components/Equipment'
-import ImprovementComparison from '@/components/ImprovementComparison'
+import DirectorMessage from '@/components/DirectorMessage'
+import PatientReviews from '@/components/PatientReviews'
+import NewsSection from '@/components/NewsSection'
+import Partnership from '@/components/Partnership'
+import BusinessHours from '@/components/BusinessHours'
 import CtaBanner from '@/components/CtaBanner'
 import Footer from '@/components/Footer'
+import FloatingCta from '@/components/FloatingCta'
 
 export default function HomePage() {
   return (
@@ -17,15 +21,19 @@ export default function HomePage() {
       <main>
         <Hero />
         <TrustBar />
+        <Stats />
         <Services />
+        <ClinicPhotos />
+        <Equipment />
         <DirectorMessage />
         <PatientReviews />
-        <Equipment />
+        <NewsSection />
+        <Partnership />
         <BusinessHours />
-        <ImprovementComparison />
         <CtaBanner />
       </main>
       <Footer />
+      <FloatingCta />
     </>
   )
 }

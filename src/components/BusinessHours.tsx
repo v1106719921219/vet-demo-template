@@ -1,4 +1,5 @@
 import { HOSPITAL, DaySchedule } from '@/lib/hospital'
+import { MapPin, Navigation, Car } from 'lucide-react'
 
 const DAYS = ['月', '火', '水', '木', '金', '土', '日', '祝'] as const
 
@@ -30,7 +31,7 @@ export default function BusinessHours() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-12 text-center">
           <p className="text-xs font-medium uppercase tracking-widest text-primary">Hours</p>
-          <h2 className="mt-2 font-serif text-2xl font-bold text-text-main sm:text-3xl">診療時間・アクセス</h2>
+          <h2 className="mt-2 font-serif text-2xl font-bold text-text-main sm:text-3xl lg:text-[36px]">診療時間・アクセス</h2>
         </div>
 
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -40,9 +41,9 @@ export default function BusinessHours() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-primary text-white">
-                    <th className="py-3 px-4 text-left font-medium">曜日</th>
-                    <th className="py-3 px-4 text-left font-medium">午前</th>
-                    <th className="py-3 px-4 text-left font-medium">午後</th>
+                    <th className="py-3 px-4 text-left text-xs font-medium tracking-wider">曜日</th>
+                    <th className="py-3 px-4 text-left text-xs font-medium tracking-wider">午前</th>
+                    <th className="py-3 px-4 text-left text-xs font-medium tracking-wider">午後</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -86,11 +87,11 @@ export default function BusinessHours() {
             </div>
 
             {/* 電話番号 */}
-            <div className="mt-6 rounded-2xl bg-primary-light p-4">
-              <p className="text-xs text-muted">お電話でのご予約・お問い合わせ</p>
+            <div className="mt-6 rounded-2xl bg-primary p-4">
+              <p className="text-xs text-white/70">お電話でのご予約・お問い合わせ</p>
               <a
                 href={`tel:${phone.replace(/-/g, '')}`}
-                className="mt-1 block font-serif text-2xl font-bold text-primary hover:opacity-80"
+                className="mt-1 block font-serif text-2xl font-bold text-white hover:opacity-80"
               >
                 {phone}
               </a>
@@ -114,15 +115,15 @@ export default function BusinessHours() {
             </div>
             <div className="mt-4 space-y-2 text-sm text-text-main">
               <p className="flex items-start gap-2">
-                <span className="mt-0.5 text-primary">📍</span>
+                <MapPin size={16} className="mt-0.5 flex-shrink-0 text-primary" />
                 {address}
               </p>
               <p className="flex items-start gap-2">
-                <span className="mt-0.5 text-primary">🚶</span>
+                <Navigation size={16} className="mt-0.5 flex-shrink-0 text-primary" />
                 {HOSPITAL.access}
               </p>
               <p className="flex items-start gap-2">
-                <span className="mt-0.5 text-primary">🚗</span>
+                <Car size={16} className="mt-0.5 flex-shrink-0 text-primary" />
                 駐車場{HOSPITAL.parking}
               </p>
             </div>

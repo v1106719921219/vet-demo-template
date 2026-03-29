@@ -1,106 +1,127 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
+import { ChevronDown, MessageCircle } from 'lucide-react'
 import { HOSPITAL } from '@/lib/hospital'
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.18, delayChildren: 0.2 },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
+}
 
 export default function Hero() {
   const catchcopy = HOSPITAL.catchcopy ?? `${HOSPITAL.name}\nへようこそ`
   const subcopy = HOSPITAL.subcopy ?? `${HOSPITAL.address}｜${HOSPITAL.animals.join('・')}の診療`
+  const lines = catchcopy.split('\n')
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-primary">
-      {/* 背景装飾 */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute -top-20 -right-20 h-96 w-96 rounded-full bg-white" />
-        <div className="absolute bottom-0 -left-32 h-80 w-80 rounded-full bg-primary-dark" />
-      </div>
+    <section className="relative min-h-screen overflow-hidden">
+      <Image
+        src="/hero-vet.png"
+        alt="動物病院イメージ"
+        fill
+        className="object-cover object-top"
+        priority
+      />
 
-      {/* Blobシェイプ */}
-      <div className="absolute right-0 top-0 h-full w-1/2 overflow-hidden opacity-20 lg:opacity-30">
-        <svg viewBox="0 0 500 500" className="h-full w-full" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M440,280Q400,360,320,400Q240,440,160,400Q80,360,60,270Q40,180,100,110Q160,40,260,40Q360,40,420,130Q480,220,440,280Z"
-            fill="#2A5C44"
-          />
-        </svg>
-      </div>
+      {/* 温かみのあるグラデーションオーバーレイ */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#2D3E2E]/90 via-[#3A5C3C]/70 to-[#5C7A5E]/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#2C2416]/50 via-transparent to-transparent" />
 
-      <div className="relative mx-auto flex min-h-screen max-w-6xl flex-col items-start justify-center px-6 py-24 lg:flex-row lg:items-center lg:gap-12">
-        {/* テキストエリア */}
+      <div className="relative mx-auto flex min-h-screen max-w-5xl flex-col items-start justify-center px-6 py-24">
         <motion.div
-          className="flex-1"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <p className="mb-4 inline-block rounded-full border border-white/30 px-4 py-1 text-xs text-white/80">
+          {/* 動物バッジ */}
+          <motion.p
+            variants={itemVariants}
+            className="mb-6 inline-block rounded-full border border-[#C8A882]/50 bg-[#C8A882]/10 px-4 py-1.5 text-xs text-[#F5EDD8]/90 backdrop-blur-sm"
+          >
             {HOSPITAL.animals.join(' ・ ')} の診療
-          </p>
+          </motion.p>
 
-          <h1 className="font-serif text-3xl font-bold leading-relaxed text-white sm:text-4xl lg:text-5xl">
-            {catchcopy.split('\n').map((line, i) => (
-              <span key={i}>
+          {/* キャッチコピー（1行ずつstagger） */}
+          <h1 className="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-[56px]">
+            {lines.map((line, i) => (
+              <motion.span key={i} variants={itemVariants} className="block">
                 {line}
-                <br />
-              </span>
+              </motion.span>
             ))}
           </h1>
 
-          <p className="mt-6 text-sm leading-loose text-white/80">
-            {subcopy.split('\n').map((line, i) => (
+          {/* サブコピー */}
+          <motion.p
+            variants={itemVariants}
+            className="mt-6 text-base leading-[1.9] text-white/80 sm:text-lg max-w-xl"
+          >
+            {subcopy.split('\n').map((line, i, arr) => (
               <span key={i}>
                 {line}
-                <br />
+                {i < arr.length - 1 && <br />}
               </span>
             ))}
-          </p>
+          </motion.p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          {/* 住所 */}
+          <motion.p variants={itemVariants} className="mt-3 text-sm text-[#C8A882]/80">
+            {HOSPITAL.address.replace(/^〒\S+\s*/, '')} ｜ {HOSPITAL.access}
+          </motion.p>
+
+          {/* ボタン */}
+          <motion.div variants={itemVariants} className="mt-10 flex flex-col gap-3 sm:flex-row">
+            {HOSPITAL.line_url && (
+              <a
+                href={HOSPITAL.line_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 rounded-full bg-[#06C755] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition-opacity hover:opacity-90"
+              >
+                <MessageCircle size={16} />
+                LINEで気軽に相談
+              </a>
+            )}
             <Link
               href="/reservation"
-              className="flex items-center justify-center rounded-full bg-accent px-8 py-3.5 text-sm font-bold text-white shadow-lg transition-opacity hover:opacity-90"
+              className="flex items-center justify-center rounded-full border border-[#C8A882]/50 bg-[#C8A882]/10 px-8 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-[#C8A882]/20"
             >
-              ご予約・お問い合わせ
+              ご予約フォームへ
             </Link>
-            <a
-              href="#services"
-              className="flex items-center justify-center rounded-full border border-white/40 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
-            >
-              診療内容を見る
-            </a>
-          </div>
-        </motion.div>
-
-        {/* ビジュアルエリア */}
-        <motion.div
-          className="relative flex-1 flex items-center justify-center mt-12 lg:mt-0"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <div className="relative flex h-72 w-72 items-center justify-center rounded-full bg-primary-light/20 lg:h-96 lg:w-96">
-            <div className="absolute inset-4 rounded-full bg-primary-light/20" />
-            {/* 写真プレースホルダー — 院長・病院写真に差し替えてください */}
-            <div className="relative z-10 flex flex-col items-center justify-center gap-4 text-white/60">
-              <svg className="h-24 w-24 opacity-40" fill="none" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="35" r="20" stroke="currentColor" strokeWidth="3" />
-                <path d="M15 85 C15 65 85 65 85 85" stroke="currentColor" strokeWidth="3" />
-                <path d="M30 55 C28 50 35 45 40 50" stroke="currentColor" strokeWidth="2" />
-                <path d="M70 55 C72 50 65 45 60 50" stroke="currentColor" strokeWidth="2" />
-              </svg>
-              <p className="text-xs text-center text-white/50">
-                {/* 院長・病院写真に<br />差し替えてください */}
-              </p>
-            </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* 下部の波形 */}
+      {/* スクロールインジケーター */}
+      <motion.div
+        className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.8, duration: 0.8 }}
+      >
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex flex-col items-center gap-1"
+        >
+          <span className="text-[10px] text-[#C8A882]/70 uppercase tracking-widest">Scroll</span>
+          <ChevronDown size={16} className="text-[#C8A882]/70" />
+        </motion.div>
+      </motion.div>
+
+      {/* 下部の有機的な波形 */}
       <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" className="w-full" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#FAFAF7" />
+        <svg viewBox="0 0 1440 100" className="w-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,30 1440,60 L1440,100 L0,100 Z" fill="#FBF8F2" />
         </svg>
       </div>
     </section>
