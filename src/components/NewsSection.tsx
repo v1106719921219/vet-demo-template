@@ -21,7 +21,7 @@ export default function NewsSection() {
   const news = HOSPITAL.news ?? defaultNews
 
   return (
-    <section className="bg-white py-20 px-4">
+    <section className="bg-bg py-20 px-4">
       <div className="mx-auto max-w-6xl">
         <motion.div
           className="mb-12 flex flex-col items-start gap-2 sm:flex-row sm:items-end sm:justify-between"
@@ -40,12 +40,12 @@ export default function NewsSection() {
           </a>
         </motion.div>
 
-        <div className="divide-y divide-gray-100">
+        <div className="divide-y divide-wood/20">
           {news.slice(0, 4).map((item, i) => (
             <motion.a
               key={i}
               href="#"
-              className="group flex flex-col gap-2 py-5 transition-colors hover:bg-primary-light/30 px-2 -mx-2 rounded-lg sm:flex-row sm:items-center sm:gap-6"
+              className="group flex flex-col gap-2 py-5 transition-colors hover:bg-cream px-2 -mx-2 rounded-lg sm:flex-row sm:items-center sm:gap-6"
               initial={{ opacity: 0, x: -16 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}

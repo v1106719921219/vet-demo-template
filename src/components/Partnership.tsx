@@ -15,7 +15,7 @@ export default function Partnership() {
   const partnerships = HOSPITAL.partnerships ?? defaultPartnerships
 
   return (
-    <section className="bg-primary-dark py-20 px-4">
+    <section style={{ backgroundColor: '#3A2E22' }} className="py-20 px-4">
       <div className="mx-auto max-w-6xl">
         <motion.div
           className="mb-12 text-center"

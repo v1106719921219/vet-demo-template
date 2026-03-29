@@ -24,9 +24,24 @@ export const metadata: Metadata = {
   keywords: HOSPITAL.seo?.keywords?.join(', '),
   openGraph: {
     title: HOSPITAL.seo?.title ?? HOSPITAL.name,
-    description: HOSPITAL.seo?.description ?? '',
+    description: HOSPITAL.seo?.description ?? `${HOSPITAL.address}の動物病院。${HOSPITAL.animals.join('・')}の診療。`,
     type: 'website',
     locale: 'ja_JP',
+    images: [
+      {
+        url: '/hero-vet.png',
+        width: 1200,
+        height: 630,
+        alt: HOSPITAL.name,
+      },
+    ],
+    siteName: HOSPITAL.name,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: HOSPITAL.seo?.title ?? HOSPITAL.name,
+    description: HOSPITAL.seo?.description ?? `${HOSPITAL.address}の動物病院。`,
+    images: ['/hero-vet.png'],
   },
   robots: { index: true, follow: true },
 }
