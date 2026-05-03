@@ -1,56 +1,32 @@
 import type { Metadata } from 'next'
-import { Noto_Sans_JP, Noto_Serif_JP } from 'next/font/google'
+import { SEO } from '@/lib/constants'
 import './globals.css'
-import { HOSPITAL } from '@/lib/hospital'
-import { DemoBanner } from '@/components/ui/DemoBanner'
-
-const notoSans = Noto_Sans_JP({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
-  variable: '--font-noto-sans',
-  display: 'swap',
-})
-
-const notoSerif = Noto_Serif_JP({
-  subsets: ['latin'],
-  weight: ['400', '600', '700'],
-  variable: '--font-noto-serif',
-  display: 'swap',
-})
 
 export const metadata: Metadata = {
-  title: HOSPITAL.seo?.title ?? `${HOSPITAL.name}｜${HOSPITAL.address.split(' ')[1]}のかかりつけ動物病院`,
-  description: HOSPITAL.seo?.description ?? `${HOSPITAL.address}の動物病院。${HOSPITAL.animals.join('・')}の診療。TEL: ${HOSPITAL.phone}`,
-  keywords: HOSPITAL.seo?.keywords?.join(', '),
+  title: SEO.title,
+  description: SEO.description,
   openGraph: {
-    title: HOSPITAL.seo?.title ?? HOSPITAL.name,
-    description: HOSPITAL.seo?.description ?? `${HOSPITAL.address}の動物病院。${HOSPITAL.animals.join('・')}の診療。`,
+    title: SEO.title,
+    description: SEO.description,
     type: 'website',
     locale: 'ja_JP',
-    images: [
-      {
-        url: '/hero-vet.png',
-        width: 1200,
-        height: 630,
-        alt: HOSPITAL.name,
-      },
-    ],
-    siteName: HOSPITAL.name,
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: HOSPITAL.seo?.title ?? HOSPITAL.name,
-    description: HOSPITAL.seo?.description ?? `${HOSPITAL.address}の動物病院。`,
-    images: ['/hero-vet.png'],
+    siteName: 'バウ・ミュウ動物病院',
   },
   robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ja" className={`${notoSans.variable} ${notoSerif.variable}`}>
-      <body>
-        <DemoBanner />
+    <html lang="ja">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kurenaido&family=Noto+Serif+JP:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@300;400;500;600&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="bg-bg text-ink font-sans antialiased">
         {children}
       </body>
     </html>

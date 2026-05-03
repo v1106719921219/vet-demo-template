@@ -1,129 +1,90 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ChevronDown, MessageCircle } from 'lucide-react'
-import { HOSPITAL } from '@/lib/hospital'
-
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.18, delayChildren: 0.2 },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] } },
-}
+import PawPrint from './PawPrint'
+import Cloud from './Cloud'
 
 export default function Hero() {
-  const catchcopy = HOSPITAL.catchcopy ?? `${HOSPITAL.name}\nへようこそ`
-  const subcopy = HOSPITAL.subcopy ?? `${HOSPITAL.address}｜${HOSPITAL.animals.join('・')}の診療`
-  const lines = catchcopy.split('\n')
-
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      <Image
-        src="/hero-vet.png"
-        alt="動物病院イメージ"
-        fill
-        className="object-cover object-top"
-        priority
-      />
-
-      {/* 温かみのあるグラデーションオーバーレイ */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#2D3E2E]/90 via-[#3A5C3C]/70 to-[#5C7A5E]/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#2C2416]/50 via-transparent to-transparent" />
-
-      <div className="relative mx-auto flex min-h-screen max-w-5xl flex-col items-start justify-center px-6 py-24">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {/* 動物バッジ */}
-          <motion.p
-            variants={itemVariants}
-            className="mb-6 inline-block rounded-full border border-[#C8A882]/50 bg-[#C8A882]/10 px-4 py-1.5 text-xs text-[#F5EDD8]/90 backdrop-blur-sm"
-          >
-            {HOSPITAL.animals.join(' ・ ')} の診療
-          </motion.p>
-
-          {/* キャッチコピー（1行ずつstagger） */}
-          <h1 className="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-[56px]">
-            {lines.map((line, i) => (
-              <motion.span key={i} variants={itemVariants} className="block">
-                {line}
-              </motion.span>
-            ))}
+    <section className="hero">
+      <div className="hero-bg">
+        <div className="sun" />
+        <Cloud size={110} color="#fff" style={{ position: 'absolute', top: 80, left: '6%', opacity: 0.7 }} />
+        <Cloud size={80} color="#fff" style={{ position: 'absolute', top: 200, right: '12%', opacity: 0.55 }} />
+        <Cloud size={130} color="#fff" style={{ position: 'absolute', top: 420, left: '18%', opacity: 0.5 }} />
+      </div>
+      <div className="wrap hero-inner">
+        <div className="hero-copy">
+          <div className="hero-eyebrow">
+            <PawPrint size={14} color="#F5A04A" />
+            <span>千葉県市原市・犬と猫のホームドクター</span>
+          </div>
+          <h1>
+            <span className="lead">千葉県市原市にある</span>
+            <span className="main"><span style={{ whiteSpace: 'nowrap' }}>わんちゃん、ねこちゃんの</span><br /><span className="accent">あたたかい</span>かかりつけへ。</span>
           </h1>
-
-          {/* サブコピー */}
-          <motion.p
-            variants={itemVariants}
-            className="mt-6 text-base leading-[1.9] text-white/80 sm:text-lg max-w-xl"
-          >
-            {subcopy.split('\n').map((line, i, arr) => (
-              <span key={i}>
-                {line}
-                {i < arr.length - 1 && <br />}
-              </span>
-            ))}
-          </motion.p>
-
-          {/* 住所 */}
-          <motion.p variants={itemVariants} className="mt-3 text-sm text-[#C8A882]/80">
-            {HOSPITAL.address.replace(/^〒\S+\s*/, '')} ｜ {HOSPITAL.access}
-          </motion.p>
-
-          {/* ボタン */}
-          <motion.div variants={itemVariants} className="mt-10 flex flex-col gap-3 sm:flex-row">
-            {HOSPITAL.line_url && (
-              <a
-                href={HOSPITAL.line_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 rounded-full bg-[#06C755] px-8 py-3.5 text-sm font-bold text-white shadow-lg transition-opacity hover:opacity-90"
-              >
-                <MessageCircle size={16} />
-                LINEで気軽に相談
-              </a>
-            )}
-            <Link
-              href="/reservation"
-              className="flex items-center justify-center rounded-full border border-[#C8A882]/50 bg-[#C8A882]/10 px-8 py-3.5 text-sm font-bold text-white backdrop-blur-sm transition-colors hover:bg-[#C8A882]/20"
-            >
-              ご予約フォームへ
-            </Link>
-          </motion.div>
-        </motion.div>
+          <p>
+            やさしい診察、ていねいな説明、そしてQOLを大切にした診療。<br />
+            ご家族の一員の、ちいさな変化も気軽にご相談ください。
+          </p>
+          <div className="hero-actions">
+            <a href="#cta" className="btn btn-orange">ご予約・お問い合わせ <span className="arrow">&rarr;</span></a>
+            <a href="#hours" className="btn btn-ghost">診療時間を見る</a>
+          </div>
+          <div className="hero-hours">
+            <div>
+              <div className="k">診療時間</div>
+              <div className="v">9:00-12:00 / 16:00-19:00</div>
+            </div>
+            <span className="sep">|</span>
+            <div>
+              <div className="k">休診日</div>
+              <div className="v">水曜・日曜午後・祝日</div>
+            </div>
+          </div>
+        </div>
+        <div className="hero-visual">
+          <div className="circle-back" />
+          <div className="circle-main">
+            <svg viewBox="0 0 400 400" style={{ width: '100%', height: '100%' }}>
+              <defs>
+                <radialGradient id="heroSky" cx="50%" cy="30%">
+                  <stop offset="0" stopColor="#FDF7EC" />
+                  <stop offset="1" stopColor="#FBC989" />
+                </radialGradient>
+              </defs>
+              <rect width="400" height="400" fill="url(#heroSky)" />
+              <circle cx="310" cy="100" r="50" fill="#F5A04A" opacity="0.85" />
+              <g opacity="0.8">
+                <ellipse cx="80" cy="260" rx="55" ry="20" fill="#8BB26A" />
+                <ellipse cx="320" cy="280" rx="70" ry="22" fill="#6A9347" />
+              </g>
+              {/* Dog */}
+              <g transform="translate(140,200)">
+                <ellipse cx="50" cy="90" rx="60" ry="28" fill="#4A3826" />
+                <ellipse cx="20" cy="60" rx="22" ry="26" fill="#6E5A42" />
+                <ellipse cx="8" cy="50" rx="7" ry="12" fill="#4A3826" />
+                <ellipse cx="30" cy="58" rx="5" ry="8" fill="#4A3826" />
+                <circle cx="16" cy="58" r="2" fill="#FDF7EC" />
+                <circle cx="26" cy="58" r="2" fill="#FDF7EC" />
+                <ellipse cx="21" cy="66" rx="2" ry="1.5" fill="#FDF7EC" />
+              </g>
+              {/* Cat */}
+              <g transform="translate(220,220)">
+                <ellipse cx="40" cy="80" rx="46" ry="22" fill="#B5A48A" />
+                <circle cx="25" cy="55" r="20" fill="#B5A48A" />
+                <polygon points="15,42 18,28 28,42" fill="#B5A48A" />
+                <polygon points="35,42 32,28 22,42" fill="#B5A48A" />
+                <circle cx="20" cy="55" r="1.8" fill="#4A3826" />
+                <circle cx="30" cy="55" r="1.8" fill="#4A3826" />
+                <path d="M 22 60 Q 25 63 28 60" stroke="#4A3826" strokeWidth="1.2" fill="none" />
+                <path d="M 72 78 Q 90 60 82 45" stroke="#B5A48A" strokeWidth="5" strokeLinecap="round" fill="none" />
+              </g>
+            </svg>
+          </div>
+          <div className="paw-float p1"><PawPrint size={52} color="#F5A04A" /></div>
+          <div className="paw-float p2"><PawPrint size={44} color="#7FB8C9" /></div>
+          <div className="paw-float p3"><PawPrint size={36} color="#8BB26A" /></div>
+        </div>
       </div>
-
-      {/* スクロールインジケーター */}
-      <motion.div
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8, duration: 0.8 }}
-      >
-        <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-1"
-        >
-          <span className="text-[10px] text-[#C8A882]/70 uppercase tracking-widest">Scroll</span>
-          <ChevronDown size={16} className="text-[#C8A882]/70" />
-        </motion.div>
-      </motion.div>
-
-      {/* 下部の有機的な波形 */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 100" className="w-full" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-          <path d="M0,60 C240,100 480,20 720,60 C960,100 1200,30 1440,60 L1440,100 L0,100 Z" fill="#FBF8F2" />
-        </svg>
-      </div>
+      <div className="hero-scroll">SCROLL</div>
     </section>
   )
 }

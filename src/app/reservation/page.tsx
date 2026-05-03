@@ -37,11 +37,47 @@ export default function ReservationPage() {
     defaultValues: { visitType: '初診' },
   })
 
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
   const onSubmit = async (data: FormData) => {
-    // TODO: メール or スプレッドシートに送信する実装
-    console.log('予約データ:', data)
-    await new Promise((r) => setTimeout(r, 800)) // デモ用の遅延
-    setSubmitted(true)
+    setSubmitError(null)
+
+    // URLパラメータからline_user_idを取得（LINE経由の場合）
+    const lineUserId = new URLSearchParams(window.location.search).get('line_user_id') || undefined
+
+    const apiUrl = process.env.NEXT_PUBLIC_VETCARE_API_URL
+    const apiKey = process.env.NEXT_PUBLIC_VETCARE_API_KEY
+
+    if (!apiUrl || !apiKey) {
+      // API未設定時はデモモード（console.log）
+      console.log('予約データ:', data)
+      await new Promise((r) => setTimeout(r, 800))
+      setSubmitted(true)
+      return
+    }
+
+    try {
+      const res = await fetch(`${apiUrl}/api/public/reservations`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': apiKey,
+        },
+        body: JSON.stringify({
+          ...data,
+          line_user_id: lineUserId,
+        }),
+      })
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}))
+        throw new Error(err.error || '送信に失敗しました')
+      }
+
+      setSubmitted(true)
+    } catch (e) {
+      setSubmitError(e instanceof Error ? e.message : '送信に失敗しました。お電話でご連絡ください。')
+    }
   }
 
   if (submitted) {
@@ -284,6 +320,12 @@ export default function ReservationPage() {
                 ))}
               </div>
             </div>
+
+            {submitError && (
+              <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+                {submitError}
+              </div>
+            )}
 
             <button
               type="submit"

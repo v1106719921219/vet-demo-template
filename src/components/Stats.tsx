@@ -1,102 +1,65 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
-import { HOSPITAL } from '@/lib/hospital'
+import SectionLabel from '@/components/SectionLabel'
 
-interface StatItem {
-  prefix?: string
-  numValue?: number
-  decimals?: number
-  textValue?: string
-  suffix?: string
-  label: string
-  sub: string
-}
+const stats = [
+  {
+    num: '30+',
+    label: '年以上',
+    desc: '地域のかかりつけ医として市原市で診療を続けてきた歴史',
+  },
+  {
+    num: '4.2',
+    label: 'Google 評価',
+    desc: '飼い主様から頂いたGoogleクチコミの平均評価',
+  },
+  {
+    num: '365',
+    label: '日 毎朝診療',
+    desc: '日曜も祝日も休まず午前診療。いつでも頼れる安心感',
+  },
+  {
+    num: '4',
+    label: '提携病院',
+    desc: '高度医療センターとの連携で難しい症例にも対応',
+  },
+]
 
-function getStats(hospital: typeof HOSPITAL): StatItem[] {
-  return [
-    {
-      prefix: '★',
-      numValue: hospital.google_rating ?? 4.0,
-      decimals: 1,
-      label: 'Googleマップ評価',
-      sub: `${hospital.review_count ?? 10}件のクチコミ`,
-    },
-    {
-      prefix: '週',
-      numValue: 7,
-      decimals: 0,
-      suffix: '日',
-      label: '診療日数',
-      sub: '日曜・祝日も午前診療',
-    },
-    {
-      numValue: hospital.equipment?.length ?? 5,
-      decimals: 0,
-      suffix: '種類',
-      label: '院内検査設備',
-      sub: '専門病院への紹介なしに検査可能',
-    },
-    {
-      textValue: hospital.animals.join('・'),
-      label: '対応動物',
-      sub: 'なんでもご相談ください',
-    },
-  ]
-}
-
-function CountUp({ value, decimals = 0, duration = 1800 }: { value: number; decimals?: number; duration?: number }) {
-  const [count, setCount] = useState(0)
-  const ref = useRef<HTMLSpanElement>(null)
-  const inView = useInView(ref, { once: true })
-
-  useEffect(() => {
-    if (!inView) return
-    const start = Date.now()
-    const tick = () => {
-      const elapsed = Date.now() - start
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3) // easeOutCubic
-      setCount(parseFloat((value * eased).toFixed(decimals)))
-      if (progress < 1) requestAnimationFrame(tick)
-    }
-    requestAnimationFrame(tick)
-  }, [inView, value, decimals, duration])
-
-  return <span ref={ref}>{count.toFixed(decimals)}</span>
-}
-
-export default function Stats() {
-  const stats = getStats(HOSPITAL)
-
+const Stats = () => {
   return (
-    <section className="bg-cream py-10 px-4">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              className="text-center"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
-              <p className="font-serif text-2xl font-bold text-primary sm:text-3xl">
-                {stat.prefix}
-                {stat.numValue !== undefined
-                  ? <CountUp value={stat.numValue} decimals={stat.decimals ?? 0} />
-                  : stat.textValue
-                }
-                {stat.suffix}
-              </p>
-              <p className="mt-1 text-sm font-medium text-text-main">{stat.label}</p>
-              <p className="mt-0.5 text-xs text-muted">{stat.sub}</p>
-            </motion.div>
+    <section className="section section-pad" id="stats">
+      <div className="wrap">
+        <SectionLabel
+          idx="01"
+          label="By The Numbers"
+          jp="実績と信頼"
+          meta="CH. 01 / 06"
+        />
+
+        <div className="stats-head">
+          <h2>
+            数字で見る、
+            <br />
+            地域のかかりつけ医。
+          </h2>
+          <p>
+            30年以上にわたり市原市八幡で診療を続けてきた実績。
+            日曜祝日も毎朝診療し、高度医療連携で難しい症例にも対応しています。
+          </p>
+        </div>
+
+        <div className="stats-grid">
+          {stats.map((s) => (
+            <div className="stat" key={s.num}>
+              <span className="stat-num">{s.num}</span>
+              <span className="stat-label">{s.label}</span>
+              <span className="stat-desc">{s.desc}</span>
+            </div>
           ))}
         </div>
       </div>
     </section>
   )
 }
+
+export default Stats

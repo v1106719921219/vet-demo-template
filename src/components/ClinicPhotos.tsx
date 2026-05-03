@@ -1,54 +1,37 @@
 'use client'
-
-import { motion } from 'framer-motion'
-import Image from 'next/image'
+import SectionLabel from '@/components/SectionLabel'
 
 const photos = [
-  { src: '/clinic-interior.png', alt: '待合室', label: '待合室' },
-  { src: '/clinic-exam.png',     alt: '診察室', label: '診察室' },
-  { src: '/clinic-ct.png',       alt: 'CT・MRI室', label: 'CT・MRI室' },
+  { c: 'tall', tag: 'Reception', num: '01', cap: '受付・待合室', en: 'THE FRONT DESK' },
+  { c: '', tag: 'Cat Room', num: '02', cap: '猫専用待合室', en: 'FELINE-ONLY AREA' },
+  { c: '', tag: 'Exam', num: '03', cap: '診察室', en: 'EXAMINATION' },
+  { c: 'wide', tag: 'Imaging', num: '04', cap: 'CT・MRI 室', en: 'ADVANCED IMAGING SUITE' },
+  { c: '', tag: 'Grooming', num: '05', cap: 'トリミング室', en: 'GROOMING ROOM' },
 ]
 
 export default function ClinicPhotos() {
   return (
-    <section className="bg-cream py-20 px-4">
-      <div className="mx-auto max-w-6xl">
-        <motion.div
-          className="mb-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-xs font-medium uppercase tracking-widest text-primary">Clinic</p>
-          <h2 className="mt-2 font-serif text-2xl font-bold text-text-main sm:text-3xl lg:text-[36px]">院内の様子</h2>
-          <div className="mx-auto mt-3 h-0.5 w-12 bg-primary" />
-          <p className="mt-3 text-sm text-muted">清潔で落ち着いた空間で、大切なご家族をお迎えします</p>
-        </motion.div>
+    <section className="section section-pad">
+      <div className="wrap">
+        <SectionLabel idx="03" label="Inside The Clinic" jp="院内の風景" meta="CH. 03 / 06" />
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {photos.map((photo, i) => (
-            <motion.div
-              key={photo.src}
-              className="group relative overflow-hidden rounded-2xl"
-              style={{ aspectRatio: '4/3' }}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-            >
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              {/* ラベル */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#2C2416]/70 to-transparent" />
-              <span className="absolute bottom-4 left-4 font-serif text-sm font-bold text-white">
-                {photo.label}
-              </span>
-            </motion.div>
+        <div className="photos-head">
+          <h2>{'静かで、清潔で、\n犬と猫にやさしい空間。'}</h2>
+          <div className="caption">
+            院内は犬エリアと猫エリアを完全に分離。待合室から診察室まで、それぞれが安心して過ごせる設計です。
+          </div>
+        </div>
+
+        <div className="filmstrip">
+          {photos.map((p) => (
+            <div className={`film${p.c ? ` ${p.c}` : ''}`} key={p.num}>
+              <div className="tag">{p.tag}</div>
+              <div className="num">{p.num}</div>
+              <div className="cap">
+                {p.cap}
+                <small>{p.en}</small>
+              </div>
+            </div>
           ))}
         </div>
       </div>

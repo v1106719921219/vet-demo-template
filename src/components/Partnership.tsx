@@ -1,54 +1,45 @@
 'use client'
+import SectionLabel from '@/components/SectionLabel'
 
-import { motion } from 'framer-motion'
-import { HOSPITAL } from '@/lib/hospital'
-import { Building2 } from 'lucide-react'
-
-const defaultPartnerships = [
-  { name: '日本獣医生命科学大学附属動物医療センター', type: '大学附属病院' },
-  { name: '東京農工大学農学部附属動物医療センター', type: '大学附属病院' },
-  { name: '千葉大学附属動物病院', type: '大学附属病院' },
-  { name: 'いぬねこホスピタル（高度医療センター）', type: '高度医療' },
+const partners = [
+  { n: '№ 01', name: '日本小動物医療センター', type: 'REFERRAL HOSPITAL · 所沢' },
+  { n: '№ 02', name: 'どうぶつの総合病院', type: 'GENERAL HOSPITAL · 市川' },
+  { n: '№ 03', name: '東京農工大学 動物医療センター', type: 'UNIVERSITY HOSPITAL · 府中' },
+  { n: '№ 04', name: '日本動物高度医療センター', type: 'ADVANCED CARE · 川崎' },
 ]
 
-export default function Partnership() {
-  const partnerships = HOSPITAL.partnerships ?? defaultPartnerships
-
+const Partnership = () => {
   return (
-    <section style={{ backgroundColor: '#3A2E22' }} className="py-20 px-4">
-      <div className="mx-auto max-w-6xl">
-        <motion.div
-          className="mb-12 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-xs font-medium uppercase tracking-widest text-white/50">Network</p>
-          <h2 className="mt-2 font-serif text-2xl font-bold text-white sm:text-3xl lg:text-[36px]">連携医療機関</h2>
-          <div className="mx-auto mt-3 h-0.5 w-12 bg-white/30" />
-          <p className="mt-3 text-sm text-white/60">難しい病気も、最善の医療へつなぎます</p>
-        </motion.div>
+    <section
+      className="section section-pad"
+      style={{ background: 'var(--bone-warm)' }}
+    >
+      <SectionLabel idx="08" label="Referral Network" jp="提携医療機関" />
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {partnerships.map((p, i) => (
-            <motion.div
-              key={i}
-              className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-            >
-              <div className="mb-3 inline-flex items-center justify-center rounded-xl bg-white/10 p-2.5">
-                <Building2 size={18} className="text-white/70" strokeWidth={1.5} />
-              </div>
-              <p className="text-[11px] font-medium text-white/40 mb-1">{p.type}</p>
-              <p className="text-sm font-medium text-white leading-snug">{p.name}</p>
-            </motion.div>
-          ))}
-        </div>
+      <div className="partner-head">
+        <h2>
+          一病院では、救えない命がある。
+          <br />
+          だから、<em>4つの</em>連携。
+        </h2>
+        <p>
+          当院だけでは対応が難しい症例にも、高度医療機関との連携により最善の治療をご提案します。大学病院や専門センターとの紹介体制を整え、大切な家族の命を守ります。
+        </p>
+      </div>
+
+      <div className="partner-grid">
+        {partners.map((p, i) => (
+          <div className="partner" key={i}>
+            <span className="partner-num">{p.n}</span>
+            <div>
+              <h4>{p.name}</h4>
+              <span className="type">{p.type}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   )
 }
+
+export default Partnership

@@ -1,132 +1,44 @@
-import { HOSPITAL, DaySchedule } from '@/lib/hospital'
-import { MapPin, Navigation, Car } from 'lucide-react'
-
-const DAYS = ['月', '火', '水', '木', '金', '土', '日', '祝'] as const
-
-function getCellClass(day: string, schedule: DaySchedule): string {
-  if (!schedule) return 'text-red-500 font-medium'
-  if (!schedule.pm) return 'text-accent font-medium'
-  return 'text-primary font-medium'
-}
-
-function getCellLabel(schedule: DaySchedule): React.ReactNode {
-  if (!schedule) return <span className="text-red-500">休診</span>
-  return (
-    <>
-      <span className="text-primary">{schedule.am}</span>
-      {schedule.pm ? (
-        <span className="block text-primary">{schedule.pm}</span>
-      ) : (
-        <span className="block text-accent text-xs">午後休診</span>
-      )}
-    </>
-  )
-}
+import PawPrint from './PawPrint'
 
 export default function BusinessHours() {
-  const { hours, phone, address } = HOSPITAL
-
   return (
-    <section id="hours" className="bg-white py-20 px-4">
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
-          <p className="text-xs font-medium uppercase tracking-widest text-primary">Hours</p>
-          <h2 className="mt-2 font-serif text-2xl font-bold text-text-main sm:text-3xl lg:text-[36px]">診療時間・アクセス</h2>
+    <section className="hours section" id="hours">
+      <div className="wrap">
+        <div className="section-title">
+          <span className="en">Hours</span>
+          <h2>診療時間</h2>
+          <div className="deco"><PawPrint size={18} color="#F5A04A" /></div>
         </div>
-
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
-          {/* 診療時間テーブル */}
-          <div>
-            <div className="overflow-hidden rounded-2xl border border-primary-light">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="bg-primary text-white">
-                    <th className="py-3 px-4 text-left text-xs font-medium tracking-wider">曜日</th>
-                    <th className="py-3 px-4 text-left text-xs font-medium tracking-wider">午前</th>
-                    <th className="py-3 px-4 text-left text-xs font-medium tracking-wider">午後</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {DAYS.filter((d) => d in hours).map((day, i) => {
-                    const schedule = hours[day]
-                    return (
-                      <tr
-                        key={day}
-                        className={`border-t border-primary-light ${i % 2 === 0 ? 'bg-white' : 'bg-primary-light/30'}`}
-                      >
-                        <td className="py-3 px-4 font-bold text-text-main">{day}</td>
-                        <td className={`py-3 px-4 ${getCellClass(day, schedule)}`}>
-                          {!schedule ? '' : schedule.am}
-                        </td>
-                        <td className={`py-3 px-4 ${getCellClass(day, schedule)}`}>
-                          {!schedule ? (
-                            <span className="text-red-500 text-xs font-medium">休診</span>
-                          ) : schedule.pm ? (
-                            schedule.pm
-                          ) : (
-                            <span className="text-accent text-xs">午後休診</span>
-                          )}
-                        </td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-
-            {/* 凡例・注記 */}
-            <div className="mt-4 flex gap-4 text-xs text-muted">
-              <span className="flex items-center gap-1">
-                <span className="inline-block h-3 w-3 rounded-full bg-accent" />
-                午後休診
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="inline-block h-3 w-3 rounded-full bg-red-400" />
-                終日休診
-              </span>
-            </div>
-
-            {/* 電話番号 */}
-            <div className="mt-6 rounded-2xl bg-primary p-4">
-              <p className="text-xs text-white/70">お電話でのご予約・お問い合わせ</p>
-              <a
-                href={`tel:${phone.replace(/-/g, '')}`}
-                className="mt-1 block font-serif text-2xl font-bold text-white hover:opacity-80"
-              >
-                {phone}
-              </a>
-            </div>
+        <div className="hours-card">
+          <table className="hours-table">
+            <thead>
+              <tr>
+                <th>診療時間</th><th>月</th><th>火</th><th>水</th><th>木</th><th>金</th>
+                <th className="sat">土</th><th className="sun">日</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>9:00〜12:00</td>
+                <td>〇</td><td>〇</td><td className="off">&minus;</td><td>〇</td><td>〇</td>
+                <td>〇</td><td>〇</td>
+              </tr>
+              <tr>
+                <td>16:00〜19:00</td>
+                <td>〇</td><td>〇</td><td className="off">&minus;</td><td>〇</td><td>〇</td>
+                <td>〇</td><td className="off">&minus;</td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="hours-note">
+            <strong>休診日</strong>：水曜・日曜午後・祝日<br />
+            ご予約は不要です。受付順にご案内いたします。
           </div>
-
-          {/* アクセス */}
-          <div id="access">
-            <div className="rounded-2xl overflow-hidden border border-primary-light">
-              {/* Googleマップ埋め込み */}
-              <iframe
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed&z=16&hl=ja`}
-                width="100%"
-                height="300"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="病院の地図"
-              />
-            </div>
-            <div className="mt-4 space-y-2 text-sm text-text-main">
-              <p className="flex items-start gap-2">
-                <MapPin size={16} className="mt-0.5 flex-shrink-0 text-primary" />
-                {address}
-              </p>
-              <p className="flex items-start gap-2">
-                <Navigation size={16} className="mt-0.5 flex-shrink-0 text-primary" />
-                {HOSPITAL.access}
-              </p>
-              <p className="flex items-start gap-2">
-                <Car size={16} className="mt-0.5 flex-shrink-0 text-primary" />
-                駐車場{HOSPITAL.parking}
-              </p>
-            </div>
+          <div className="hours-first">
+            <h4>&lt; 初めてご来院の方へ &gt;</h4>
+            <p>
+              問診票のご記入がございますので、午前は<strong>11:30</strong>まで、午後は<strong>18:30</strong>までに受付をお願いいたします。それ以降の場合は一度お電話くださいませ。
+            </p>
           </div>
         </div>
       </div>
