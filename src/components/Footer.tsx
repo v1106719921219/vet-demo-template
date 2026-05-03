@@ -1,102 +1,46 @@
-import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, Phone, Car, Navigation } from 'lucide-react'
-import { HOSPITAL } from '@/lib/hospital'
-
-const DAYS = ['月', '火', '水', '木', '金', '土', '日', '祝'] as const
 
 export default function Footer() {
-  const { hours } = HOSPITAL
-
   return (
-    <footer style={{ backgroundColor: '#2A2018' }} className="py-14 px-4 text-white/80">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-          {/* 病院情報 */}
-          <div>
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="overflow-hidden rounded-xl bg-white/10 p-1">
-                <Image src="/logo.png" alt={HOSPITAL.name} width={36} height={36} className="object-contain" />
-              </div>
-              <div>
-                <p className="font-serif text-sm font-bold text-white">{HOSPITAL.name}</p>
-                <p className="text-[10px] text-white/40 tracking-wider">Bowmew Animal Hospital</p>
-              </div>
+    <footer className="footer">
+      <div className="wrap">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <div className="logo-row">
+              <Image src="/logo.png" alt="バウミュウ動物病院" width={44} height={44} />
+              <h3>バウミュウ動物病院</h3>
             </div>
-            <div className="space-y-2 text-xs">
-              <p className="flex items-start gap-2">
-                <MapPin size={13} className="mt-0.5 flex-shrink-0 text-white/40" />
-                {HOSPITAL.address}
-              </p>
-              <p className="flex items-start gap-2">
-                <Navigation size={13} className="mt-0.5 flex-shrink-0 text-white/40" />
-                {HOSPITAL.access}
-              </p>
-              <p className="flex items-start gap-2">
-                <Car size={13} className="mt-0.5 flex-shrink-0 text-white/40" />
-                駐車場{HOSPITAL.parking}
-              </p>
-            </div>
-            <a
-              href={`tel:${HOSPITAL.phone.replace(/-/g, '')}`}
-              className="mt-4 flex items-center gap-2 text-sm font-bold text-white hover:opacity-80 transition-opacity"
-            >
-              <Phone size={14} />
-              {HOSPITAL.phone}
-            </a>
+            <p>
+              〒290-0065<br />
+              千葉県市原市八幡520<br />
+              TEL 0436-41-1008 / FAX 0436-41-1009<br />
+              診療時間 9:00〜12:00 / 16:00〜19:00<br />
+              休診日 水曜・日曜午後・祝日
+            </p>
           </div>
-
-          {/* 診療時間 */}
           <div>
-            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-white/40">診療時間</h3>
-            <div className="space-y-1.5 text-xs">
-              {DAYS.filter((d) => d in hours).map((day) => {
-                const s = hours[day]
-                return (
-                  <div key={day} className="flex justify-between border-b border-white/5 pb-1.5">
-                    <span className="text-white/60">{day}曜</span>
-                    <span>
-                      {!s ? (
-                        <span className="text-red-400">休診</span>
-                      ) : (
-                        <>
-                          {s.am}
-                          {s.pm ? ` / ${s.pm}` : <span className="text-white/40"> ／ 午後休</span>}
-                        </>
-                      )}
-                    </span>
-                  </div>
-                )
-              })}
-            </div>
+            <h5>Menu</h5>
+            <ul>
+              <li><a href="#philosophy">当院について</a></li>
+              <li><a href="#features">診療案内</a></li>
+              <li><a href="#director">院長紹介</a></li>
+              <li><a href="#hours">診療時間</a></li>
+              <li><a href="#access">アクセス</a></li>
+            </ul>
           </div>
-
-          {/* ナビ */}
           <div>
-            <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-white/40">メニュー</h3>
-            <nav className="space-y-2.5 text-xs">
-              <a href="#services"  className="block hover:text-white transition-colors">診療案内</a>
-              <a href="#hours"     className="block hover:text-white transition-colors">診療時間・アクセス</a>
-              <a href="#director"  className="block hover:text-white transition-colors">院長メッセージ</a>
-              <a href="#equipment" className="block hover:text-white transition-colors">設備紹介</a>
-              <Link href="/reservation" className="block hover:text-white transition-colors">ご予約</Link>
-            </nav>
-
-            <div className="mt-8 rounded-xl bg-white/5 p-4">
-              <p className="text-xs text-white/40 mb-1">ご予約・お問い合わせ</p>
-              <a
-                href={`tel:${HOSPITAL.phone.replace(/-/g, '')}`}
-                className="font-serif text-xl font-bold text-white hover:opacity-80 transition-opacity"
-              >
-                {HOSPITAL.phone}
-              </a>
-            </div>
+            <h5>Contact</h5>
+            <ul>
+              <li><a href="tel:0436411008">0436-41-1008</a></li>
+              <li><a href="#">お問い合わせフォーム</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">採用情報</a></li>
+            </ul>
           </div>
         </div>
-
-        <div className="mt-10 border-t border-white/10 pt-6 flex flex-col items-center gap-1 text-center text-xs text-white/30">
-          <p>© {new Date().getFullYear()} {HOSPITAL.name}. All Rights Reserved.</p>
-          <p className="text-[10px]">千葉県市原市のかかりつけ動物病院</p>
+        <div className="footer-bottom">
+          <span>&copy; Bow-Meow Animal Clinic</span>
+          <span>Designed with 🐾</span>
         </div>
       </div>
     </footer>
