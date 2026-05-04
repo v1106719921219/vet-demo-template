@@ -4,7 +4,7 @@
 
 export const CLINIC = {
   name: 'バウ・ミュウ動物病院',
-  nameEn: 'Bow-Meow Animal Clinic',
+  nameEn: 'Bow-Mew Animal Hospital',
   phone: '0436-41-1008',
   fax: '0436-41-1952',
   zip: '〒290-0062',

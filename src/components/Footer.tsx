@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>&copy; Bow-Meow Animal Clinic</span>
+          <span>&copy; Bow-Mew Animal Hospital</span>
           <span>Designed with 🐾</span>
         </div>
       </div>
