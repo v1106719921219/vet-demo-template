@@ -1,6 +1,7 @@
 import { CLINIC, HOURS } from '@/lib/constants'
 
 const features = [
+  { title: '予約なし・当日受付OK', text: 'お電話やご予約なしでもご来院いただけます。急な体調不良にもすぐ対応いたします。', icon: '🏥' },
   { title: 'やさしく丁寧な診療', text: '症状だけでなく、普段の様子やご家族の不安にも寄り添いながら診療します。', icon: '🐾' },
   { title: 'わかりやすい説明', text: '検査・治療方針・費用の目安まで、できるだけわかりやすくお伝えします。', icon: '🩺' },
   { title: '予防医療を大切に', text: 'ワクチン、フィラリア、ノミ・マダニ予防、健康診断までサポートします。', icon: '🌿' },
@@ -34,6 +35,18 @@ export default function HomePage() {
       {/* ——— Hero ——— */}
       <section className="hero">
         <img src="/images/hero.jpg" alt={CLINIC.name} />
+      </section>
+
+      {/* ——— 予約不要バナー ——— */}
+      <section className="walkInBanner">
+        <div className="container walkInInner">
+          <span className="walkInIcon">🐾</span>
+          <div>
+            <strong>予約なしでも診療OK！当日受付歓迎</strong>
+            <p>お気軽にご来院ください。急な体調変化にもすぐに対応いたします。</p>
+          </div>
+          <a className="primaryBtn" href={`tel:${CLINIC.phone.replace(/-/g, '')}`}>今すぐ電話する</a>
+        </div>
       </section>
 
       {/* ——— Features ——— */}
