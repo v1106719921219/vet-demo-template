@@ -168,9 +168,11 @@ td:first-child, th:first-child { text-align: left; }
 .ctaBox .primaryBtn { background: white; color: #ff8a3d; }
 
 /* Footer */
-.footer { background: #2d2d2d; color: white; padding: 34px 0; }
+.footer { background: #2d2d2d; color: white; padding: 40px 0 24px; }
 .footerInner { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+.footerGrid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px; }
 .footer p, .footer small { color: rgba(255,255,255,0.64); margin: 8px 0 0; }
+.footer a:hover { color: #fff; }
 
 /* Mobile CTA */
 .mobileCta {
@@ -217,4 +219,5 @@ td:first-child, th:first-child { text-align: left; }
   table { font-size: 13px; }
   th, td { padding: 12px 6px; }
   .footerInner { flex-direction: column; align-items: flex-start; }
+  .footerGrid { grid-template-columns: 1fr; }
 }

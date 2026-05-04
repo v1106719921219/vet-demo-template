@@ -23,10 +23,12 @@ export default function HomePage() {
             </span>
           </a>
           <nav className="nav">
-            <a href="#features">当院の特徴</a>
-            <a href="#services">診療案内</a>
-            <a href="#hours">診療時間</a>
-            <a href="#access">アクセス</a>
+            <a href="/about">当院について</a>
+            <a href="/services">診療案内</a>
+            <a href="/price">料金</a>
+            <a href="/first-visit">初めての方</a>
+            <a href="/access">アクセス</a>
+            <a href="/blog">コラム</a>
           </nav>
           <a className="headerBtn" href={`tel:${CLINIC.phone.replace(/-/g, '')}`}>電話する</a>
         </div>
@@ -179,12 +181,38 @@ export default function HomePage() {
 
       {/* ——— Footer ——— */}
       <footer className="footer">
-        <div className="container footerInner">
-          <div>
-            <strong>{CLINIC.name}</strong>
-            <p>{CLINIC.zip} {CLINIC.address}<br />TEL {CLINIC.phone}</p>
+        <div className="container">
+          <div className="footerGrid">
+            <div>
+              <strong style={{ fontSize: '16px' }}>{CLINIC.name}</strong>
+              <p style={{ margin: '8px 0', fontSize: '13px', lineHeight: 1.8, color: 'rgba(255,255,255,0.7)' }}>
+                {CLINIC.zip} {CLINIC.address}<br />
+                TEL {CLINIC.phone}<br />
+                午前 {HOURS.amTime} / 午後 {HOURS.pmTime}
+              </p>
+            </div>
+            <div>
+              <strong style={{ fontSize: '14px' }}>診療</strong>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '8px 0', fontSize: '13px', lineHeight: 2, color: 'rgba(255,255,255,0.7)' }}>
+                <li><a href="/services" style={{ color: 'rgba(255,255,255,0.7)' }}>診療案内</a></li>
+                <li><a href="/price" style={{ color: 'rgba(255,255,255,0.7)' }}>料金案内</a></li>
+                <li><a href="/first-visit" style={{ color: 'rgba(255,255,255,0.7)' }}>初めての方へ</a></li>
+                <li><a href="/faq" style={{ color: 'rgba(255,255,255,0.7)' }}>よくある質問</a></li>
+              </ul>
+            </div>
+            <div>
+              <strong style={{ fontSize: '14px' }}>情報</strong>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '8px 0', fontSize: '13px', lineHeight: 2, color: 'rgba(255,255,255,0.7)' }}>
+                <li><a href="/about" style={{ color: 'rgba(255,255,255,0.7)' }}>当院について</a></li>
+                <li><a href="/access" style={{ color: 'rgba(255,255,255,0.7)' }}>アクセス・診療時間</a></li>
+                <li><a href="/area" style={{ color: 'rgba(255,255,255,0.7)' }}>市原市八幡の動物病院</a></li>
+                <li><a href="/blog" style={{ color: 'rgba(255,255,255,0.7)' }}>コラム・お知らせ</a></li>
+              </ul>
+            </div>
           </div>
-          <small>&copy; {CLINIC.nameEn}</small>
+          <div style={{ borderTop: '1px solid rgba(255,255,255,0.15)', marginTop: '24px', paddingTop: '16px', textAlign: 'center' }}>
+            <small style={{ color: 'rgba(255,255,255,0.5)' }}>&copy; {CLINIC.nameEn}</small>
+          </div>
         </div>
       </footer>
 
