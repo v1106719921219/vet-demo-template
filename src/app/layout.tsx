@@ -12,8 +12,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ja_JP',
     siteName: 'バウ・ミュウ動物病院',
-    url: 'https://vet-demo-template.vercel.app',
-    images: [{ url: 'https://vet-demo-template.vercel.app/images/hero.jpg', width: 1200, height: 630, alt: 'バウ・ミュウ動物病院 - 千葉県市原市の動物病院' }],
+    url: 'https://bowmew-ah.com',
+    images: [{ url: 'https://bowmew-ah.com/images/hero.jpg', width: 1200, height: 630, alt: 'バウ・ミュウ動物病院 - 千葉県市原市の動物病院' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: SEO.description,
   },
   alternates: {
-    canonical: 'https://vet-demo-template.vercel.app',
+    canonical: 'https://bowmew-ah.com',
   },
   robots: { index: true, follow: true },
 }
@@ -31,7 +31,7 @@ const jsonLd = {
   '@type': 'VeterinaryCare',
   name: CLINIC.name,
   alternateName: CLINIC.nameEn,
-  url: 'https://vet-demo-template.vercel.app',
+  url: 'https://bowmew-ah.com',
   telephone: CLINIC.phone,
   faxNumber: CLINIC.fax,
   address: {
@@ -52,7 +52,7 @@ const jsonLd = {
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Friday', 'Saturday'], opens: '15:30', closes: '18:00' },
     { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Wednesday', 'Thursday', 'Sunday'], opens: '09:00', closes: '12:30' },
   ],
-  image: 'https://vet-demo-template.vercel.app/logo.png',
+  image: 'https://bowmew-ah.com/logo.png',
   priceRange: '$$',
   areaServed: {
     '@type': 'City',
