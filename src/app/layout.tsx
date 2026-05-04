@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     canonical: 'https://bowmew-ah.com',
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: 'YPvvvvXgrFYMTB4Q6sWU8S88XLvbMC6wAs09rRKyRC0',
+  },
 }
 
 const jsonLd = {
