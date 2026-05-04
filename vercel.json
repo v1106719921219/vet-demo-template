@@ -1,4 +1,14 @@
 {
   "buildCommand": "next build",
-  "outputDirectory": ".next"
+  "outputDirectory": ".next",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "host", "value": "vet-demo-template.vercel.app" }
+      ],
+      "destination": "https://bowmew-ah.com/:path*",
+      "permanent": true
+    }
+  ]
 }
