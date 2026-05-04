@@ -14,7 +14,7 @@ export const CLINIC = {
   icAccess: '館山道 市原ICより約10分',
   lineUrl: 'https://lin.ee/bowmew',
   googleMapUrl:
-    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810.3!2d140.1167!3d35.5231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60228308b3c5b5e7%3A0x4c7e7e2e0e5a5a5a!2z44OQ44Km44Of44Ol44Km5YuV54mp55eF6Zmi!5e0!3m2!1sja!2sjp!4v1700000000000',
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3245.5!2d140.1204618!3d35.5323696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6022996015ea062f%3A0xb5d2a1600dc26f96!2z44OQ44Km44Of44Ol44Km5YuV54mp55eF6Zmi!5e0!3m2!1sja!2sjp!4v1700000000000',
   googleMapDirectionUrl:
     'https://www.google.com/maps/dir/?api=1&destination=千葉県市原市八幡520',
   director: {
