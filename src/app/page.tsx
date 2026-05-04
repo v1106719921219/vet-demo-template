@@ -34,7 +34,8 @@ export default function HomePage() {
 
       {/* ——— Hero ——— */}
       <section className="hero">
-        <img src="/images/hero.jpg" alt={CLINIC.name} />
+        <h1 className="sr-only">市原市の動物病院 バウ・ミュウ動物病院｜予約不要・当日受付OK・日曜診療</h1>
+        <img src="/images/hero.jpg" alt="バウ・ミュウ動物病院 - 千葉県市原市八幡の動物病院 予約不要・当日受付OK" />
       </section>
 
       {/* ——— 予約不要バナー ——— */}

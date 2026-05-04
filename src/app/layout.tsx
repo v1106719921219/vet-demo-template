@@ -5,7 +5,7 @@ import './globals.css'
 export const metadata: Metadata = {
   title: SEO.title,
   description: SEO.description,
-  keywords: ['動物病院', '市原市', '八幡', '犬', '猫', 'ペット', '予防接種', '健康診断', 'トリミング', 'ペットホテル', 'バウミュウ', 'バウ・ミュウ'],
+  keywords: ['市原市 動物病院', '動物病院 市原', '市原 動物病院 予約不要', '八幡宿 動物病院', '市原市 犬 病院', '市原市 猫 病院', '市原 ペットホテル', '市原 トリミング', '市原市 日曜 動物病院', '当日受付 動物病院', 'バウミュウ', 'バウ・ミュウ動物病院', '予防接種', '健康診断'],
   openGraph: {
     title: SEO.title,
     description: SEO.description,
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     locale: 'ja_JP',
     siteName: 'バウ・ミュウ動物病院',
     url: 'https://vet-demo-template.vercel.app',
+    images: [{ url: 'https://vet-demo-template.vercel.app/images/hero.jpg', width: 1200, height: 630, alt: 'バウ・ミュウ動物病院 - 千葉県市原市の動物病院' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -66,6 +67,13 @@ const jsonLd = {
   currenciesAccepted: 'JPY',
   paymentAccepted: '現金',
   parking: CLINIC.parking,
+  hasMap: 'https://www.google.com/maps?q=バウミュウ動物病院',
+  amenityFeature: [
+    { '@type': 'LocationFeatureSpecification', name: '駐車場', value: true },
+    { '@type': 'LocationFeatureSpecification', name: '予約不要', value: true },
+    { '@type': 'LocationFeatureSpecification', name: '当日受付', value: true },
+  ],
+  additionalType: 'http://www.productontology.org/id/Veterinary_medicine',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
