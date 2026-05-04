@@ -15,7 +15,7 @@ export default function HomePage() {
       <header className="header">
         <div className="headerInner">
           <a className="logo" href="#">
-            <img src="/logo.png" alt={CLINIC.name} className="logoMark" style={{ width: 40, height: 40, borderRadius: 0, background: 'transparent', fontSize: 'inherit' }} />
+            <img src="/logo.png" alt={CLINIC.name} className="logoMark" style={{ width: 64, height: 64, borderRadius: 0, background: 'transparent', fontSize: 'inherit' }} />
             <span>
               <strong>{CLINIC.name}</strong>
               <small>犬と猫のホームドクター</small>

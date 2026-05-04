@@ -18,7 +18,7 @@ export default function Navbar() {
     <nav className="nav">
       <div className="wrap nav-inner">
         <a href="#" className="nav-brand">
-          <div className="nav-logo"><Image src="/logo.png" alt="バウミュウ動物病院" width={40} height={40} /></div>
+          <div className="nav-logo"><Image src="/logo.png" alt="バウミュウ動物病院" width={56} height={56} /></div>
           <div>
             <div className="nav-brand-text">バウミュウ動物病院</div>
             <span className="nav-brand-sub">Bow-Mew Animal Hospital</span>
