@@ -14,7 +14,7 @@ export default function FirstVisitPage() {
       <header className="header">
         <div className="headerInner">
           <a className="logo" href="/">
-            <img src="/logo.png" alt={CLINIC.name} className="logoMark" style={{ width: 80, height: 80, borderRadius: 0, background: 'transparent' }} />
+            <img src="/logo.png" alt={CLINIC.name} className="logoMark" style={{ width: 100, height: 100, borderRadius: 0, background: 'transparent' }} />
             <span>
               <strong>{CLINIC.name}</strong>
               <small>犬と猫のホームドクター</small>
