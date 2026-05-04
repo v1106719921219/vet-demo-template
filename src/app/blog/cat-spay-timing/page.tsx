@@ -112,14 +112,15 @@ export default function CatSpayTiming() {
               <a href="tel:0436411008" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#ff8a3d', color: '#fff', padding: '14px 28px', borderRadius: '50px', fontWeight: 700, fontSize: '16px', textDecoration: 'none' }}>電話で相談する（0436-41-1008）</a>
               <a href="/access" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', color: '#ff8a3d', padding: '14px 28px', borderRadius: '50px', fontWeight: 700, fontSize: '16px', textDecoration: 'none', border: '2px solid #ff8a3d' }}>アクセス・地図を見る</a>
             </div>
+          </div>
           <div style={{ marginTop: '32px' }}>
-  <h3 style={{ fontSize: '18px', color: '#ff8a3d', marginBottom: '16px' }}>関連コラム</h3>
-  <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '12px' }}>
-    <li><a href="/blog/cat-neuter-cost" style={{ color: '#333', textDecoration: 'none', display: 'block', padding: '16px', background: '#fff', borderRadius: '12px', border: '1px solid #f0e5d7', lineHeight: 1.6 }}>猫の去勢手術の費用と流れ｜市原市の動物病院が解説</a></li>
-    <li><a href="/blog/dog-spay-surgery" style={{ color: '#333', textDecoration: 'none', display: 'block', padding: '16px', background: '#fff', borderRadius: '12px', border: '1px solid #f0e5d7', lineHeight: 1.6 }}>【市原市】犬の避妊手術｜適切な時期・費用・術後ケアを解説</a></li>
-    <li><a href="/blog/dog-neuter-benefits" style={{ color: '#333', textDecoration: 'none', display: 'block', padding: '16px', background: '#fff', borderRadius: '12px', border: '1px solid #f0e5d7', lineHeight: 1.6 }}>犬の去勢手術｜メリット・デメリットと適切な時期</a></li>
-  </ul>
-</div>
+            <h3 style={{ fontSize: '18px', color: '#ff8a3d', marginBottom: '16px' }}>関連コラム</h3>
+            <ul style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '12px' }}>
+              <li><a href="/blog/cat-neuter-cost" style={{ color: '#333', textDecoration: 'none', display: 'block', padding: '16px', background: '#fff', borderRadius: '12px', border: '1px solid #f0e5d7', lineHeight: 1.6 }}>猫の去勢手術の費用と流れ｜市原市の動物病院が解説</a></li>
+              <li><a href="/blog/dog-spay-surgery" style={{ color: '#333', textDecoration: 'none', display: 'block', padding: '16px', background: '#fff', borderRadius: '12px', border: '1px solid #f0e5d7', lineHeight: 1.6 }}>【市原市】犬の避妊手術｜適切な時期・費用・術後ケアを解説</a></li>
+              <li><a href="/blog/dog-neuter-benefits" style={{ color: '#333', textDecoration: 'none', display: 'block', padding: '16px', background: '#fff', borderRadius: '12px', border: '1px solid #f0e5d7', lineHeight: 1.6 }}>犬の去勢手術｜メリット・デメリットと適切な時期</a></li>
+            </ul>
+          </div>
           <div style={{ marginTop: '24px', textAlign: 'center' }}><a href="/blog" style={{ color: '#ff8a3d', fontWeight: 700 }}>コラム一覧に戻る</a></div>
         </div>
       </article>
