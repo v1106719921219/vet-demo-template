@@ -89,6 +89,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&family=Zen+Kurenaido&family=Noto+Serif+JP:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@300;400;500;600&display=swap"
           rel="stylesheet"
         />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-9K10XBBN5B" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-9K10XBBN5B');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
