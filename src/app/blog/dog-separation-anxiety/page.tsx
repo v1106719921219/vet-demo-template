@@ -22,8 +22,35 @@ export const metadata: Metadata = {
 }
 
 export default function DogSeparationAnxiety() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: '犬の分離不安症｜症状・原因と改善トレーニング',
+    description: '犬の分離不安症の症状、原因、改善のためのトレーニング方法を獣医師が解説。留守番中の問題行動でお悩みの飼い主さんに役立つ情報をまとめました。',
+    image: "https://bowmew-ah.com/blog/dog-separation-anxiety.webp",
+    datePublished: "2025-12-28",
+    author: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      url: "https://bowmew-ah.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://bowmew-ah.com/logo.png",
+      },
+    },
+  }
+
   return (
-    <main className="site">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="site">
       <header className="header">
         <div className="headerInner">
           <a className="logo" href="/"><img src="/logo.png" alt="バウ・ミュウ動物病院" className="logoMark" style={{ width: 100, height: 100, borderRadius: 0, background: 'transparent' }} /><span><strong>バウ・ミュウ動物病院</strong><small>犬と猫のホームドクター</small></span></a>
@@ -31,6 +58,15 @@ export default function DogSeparationAnxiety() {
           <a className="headerBtn" href="tel:0436411008">電話する</a>
         </div>
       </header>
+      <nav style={{ background: '#fff9f0', padding: '12px 0', fontSize: '13px', color: '#999' }}>
+        <div className="container">
+          <a href="/" style={{ color: '#999', textDecoration: 'none' }}>ホーム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <a href="/blog" style={{ color: '#999', textDecoration: 'none' }}>コラム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <span style={{ color: '#666' }}>犬の分離不安症</span>
+        </div>
+      </nav>
       <article className="section warm">
         <div className="container" style={{ maxWidth: '800px' }}>
           <p className="eyebrow">COLUMN</p>
@@ -120,6 +156,7 @@ export default function DogSeparationAnxiety() {
           <div style={{ marginTop: '24px', textAlign: 'center' }}><a href="/blog" style={{ color: '#ff8a3d', fontWeight: 700 }}>コラム一覧に戻る</a></div>
         </div>
       </article>
-    </main>
+      </main>
+    </>
   )
 }

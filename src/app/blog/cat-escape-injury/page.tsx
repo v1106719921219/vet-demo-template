@@ -22,8 +22,35 @@ export const metadata: Metadata = {
 }
 
 export default function CatEscapeInjury() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: '猫が脱走して怪我をした時の対処法｜予防策も解説',
+    description: '猫が脱走して怪我をして帰ってきた時の対処法を解説。傷の応急処置、受診の判断基準、脱走防止対策まで獣医師が詳しくご紹介します。',
+    image: "https://bowmew-ah.com/blog/cat-escape-injury.webp",
+    datePublished: "2026-01-25",
+    author: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      url: "https://bowmew-ah.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://bowmew-ah.com/logo.png",
+      },
+    },
+  }
+
   return (
-    <main className="site">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="site">
       <header className="header">
         <div className="headerInner">
           <a className="logo" href="/"><img src="/logo.png" alt="バウ・ミュウ動物病院" className="logoMark" style={{ width: 100, height: 100, borderRadius: 0, background: 'transparent' }} /><span><strong>バウ・ミュウ動物病院</strong><small>犬と猫のホームドクター</small></span></a>
@@ -31,6 +58,15 @@ export default function CatEscapeInjury() {
           <a className="headerBtn" href="tel:0436411008">電話する</a>
         </div>
       </header>
+      <nav style={{ background: '#fff9f0', padding: '12px 0', fontSize: '13px', color: '#999' }}>
+        <div className="container">
+          <a href="/" style={{ color: '#999', textDecoration: 'none' }}>ホーム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <a href="/blog" style={{ color: '#999', textDecoration: 'none' }}>コラム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <span style={{ color: '#666' }}>猫の脱走・怪我の対処法</span>
+        </div>
+      </nav>
       <article className="section warm">
         <div className="container" style={{ maxWidth: '800px' }}>
           <p className="eyebrow">COLUMN</p>
@@ -122,6 +158,7 @@ export default function CatEscapeInjury() {
           <div style={{ marginTop: '24px', textAlign: 'center' }}><a href="/blog" style={{ color: '#ff8a3d', fontWeight: 700 }}>コラム一覧に戻る</a></div>
         </div>
       </article>
-    </main>
+      </main>
+    </>
   )
 }

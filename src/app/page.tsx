@@ -9,9 +9,36 @@ const features = [
 
 const services = ['一般診療', '予防接種', '健康診断', 'フィラリア予防', 'ノミ・マダニ予防', '避妊・去勢相談', '皮膚・耳の相談', 'シニアケア']
 
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VeterinaryCare',
+  name: 'バウ・ミュウ動物病院',
+  url: 'https://bowmew-ah.com',
+  telephone: '0436-41-1008',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '八幡520',
+    addressLocality: '市原市',
+    addressRegion: '千葉県',
+    postalCode: '290-0062',
+    addressCountry: 'JP',
+  },
+  openingHours: [
+    'Mo-Tu 09:00-12:30',
+    'Mo-Tu 15:30-18:00',
+    'We 09:00-12:30',
+    'Th 09:00-12:30',
+    'Fr-Sa 09:00-12:30',
+    'Fr-Sa 15:30-18:00',
+    'Su 09:00-12:30',
+  ],
+  image: 'https://bowmew-ah.com/images/hero.jpg',
+}
+
 export default function HomePage() {
   return (
     <main className="site">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }} />
       {/* ——— Header ——— */}
       <header className="header">
         <div className="headerInner">

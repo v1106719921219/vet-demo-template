@@ -22,8 +22,35 @@ export const metadata: Metadata = {
 }
 
 export default function SummerHeatstrokePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: '犬の熱中症に注意！市原市の夏を安全に過ごすための対策',
+    description: '千葉県市原市のバウ・ミュウ動物病院が犬の熱中症の症状・応急処置・予防法を解説。市原市の夏は高温多湿で熱中症リスクが高く、散歩の時間帯や水分補給に注意が必要です。',
+    image: "https://bowmew-ah.com/blog/summer-heatstroke.webp",
+    datePublished: "2026-04-10",
+    author: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      url: "https://bowmew-ah.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://bowmew-ah.com/logo.png",
+      },
+    },
+  }
+
   return (
-    <main className="site">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="site">
       <header className="header">
         <div className="headerInner">
           <a className="logo" href="/"><img src="/logo.png" alt="バウ・ミュウ動物病院" className="logoMark" style={{ width: 100, height: 100, borderRadius: 0, background: 'transparent' }} /><span><strong>バウ・ミュウ動物病院</strong><small>犬と猫のホームドクター</small></span></a>
@@ -31,6 +58,15 @@ export default function SummerHeatstrokePage() {
           <a className="headerBtn" href="tel:0436411008">電話する</a>
         </div>
       </header>
+      <nav style={{ background: '#fff9f0', padding: '12px 0', fontSize: '13px', color: '#999' }}>
+        <div className="container">
+          <a href="/" style={{ color: '#999', textDecoration: 'none' }}>ホーム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <a href="/blog" style={{ color: '#999', textDecoration: 'none' }}>コラム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <span style={{ color: '#666' }}>犬の熱中症対策</span>
+        </div>
+      </nav>
       <article className="section warm">
         <div className="container" style={{ maxWidth: '800px' }}>
           <p className="eyebrow">COLUMN</p>
@@ -132,6 +168,7 @@ export default function SummerHeatstrokePage() {
         </div>
       </article>
       <footer className="footer"><div className="container footerInner"><div><strong>バウ・ミュウ動物病院</strong><p>〒290-0062 千葉県市原市八幡520<br />TEL 0436-41-1008</p></div><small>&copy; Bow-Mew Animal Hospital</small></div></footer>
-    </main>
+      </main>
+    </>
   )
 }

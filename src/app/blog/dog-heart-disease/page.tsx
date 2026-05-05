@@ -22,8 +22,35 @@ export const metadata: Metadata = {
 }
 
 export default function DogHeartDiseasePage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: '犬の心臓病｜咳が増えたら要注意？初期症状と治療法',
+    description: '犬の心臓病の初期症状・原因・治療法をバウ・ミュウ動物病院が解説。咳が増えた、疲れやすくなったなどの変化は心臓病のサインかもしれません。早期発見のポイントをご案内。',
+    image: "https://bowmew-ah.com/blog/dog-heart-disease.webp",
+    datePublished: "2026-04-05",
+    author: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      url: "https://bowmew-ah.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://bowmew-ah.com/logo.png",
+      },
+    },
+  }
+
   return (
-    <main className="site">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="site">
       <header className="header">
         <div className="headerInner">
           <a className="logo" href="/"><img src="/logo.png" alt="バウ・ミュウ動物病院" className="logoMark" style={{ width: 100, height: 100, borderRadius: 0, background: 'transparent' }} /><span><strong>バウ・ミュウ動物病院</strong><small>犬と猫のホームドクター</small></span></a>
@@ -31,6 +58,15 @@ export default function DogHeartDiseasePage() {
           <a className="headerBtn" href="tel:0436411008">電話する</a>
         </div>
       </header>
+      <nav style={{ background: '#fff9f0', padding: '12px 0', fontSize: '13px', color: '#999' }}>
+        <div className="container">
+          <a href="/" style={{ color: '#999', textDecoration: 'none' }}>ホーム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <a href="/blog" style={{ color: '#999', textDecoration: 'none' }}>コラム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <span style={{ color: '#666' }}>犬の心臓病の初期症状</span>
+        </div>
+      </nav>
       <article className="section warm">
         <div className="container" style={{ maxWidth: '800px' }}>
           <p className="eyebrow">COLUMN</p>
@@ -124,6 +160,7 @@ export default function DogHeartDiseasePage() {
         </div>
       </article>
       <footer className="footer"><div className="container footerInner"><div><strong>バウ・ミュウ動物病院</strong><p>〒290-0062 千葉県市原市八幡520<br />TEL 0436-41-1008</p></div><small>&copy; Bow-Mew Animal Hospital</small></div></footer>
-    </main>
+      </main>
+    </>
   )
 }

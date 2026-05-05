@@ -22,8 +22,35 @@ export const metadata: Metadata = {
 }
 
 export default function CatStressSignsPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: '猫のストレスサイン｜見逃しやすい7つの行動変化',
+    description: '千葉県市原市のバウ・ミュウ動物病院が猫のストレスサインについて解説。過剰グルーミング・食欲変化・隠れるなど、見逃しやすい7つの行動変化と対処法をご紹介。',
+    image: "https://bowmew-ah.com/blog/cat-stress-signs.webp",
+    datePublished: "2025-12-15",
+    author: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      url: "https://bowmew-ah.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "バウ・ミュウ動物病院",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://bowmew-ah.com/logo.png",
+      },
+    },
+  }
+
   return (
-    <main className="site">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main className="site">
       <header className="header">
         <div className="headerInner">
           <a className="logo" href="/"><img src="/logo.png" alt="バウ・ミュウ動物病院" className="logoMark" style={{ width: 100, height: 100, borderRadius: 0, background: 'transparent' }} /><span><strong>バウ・ミュウ動物病院</strong><small>犬と猫のホームドクター</small></span></a>
@@ -31,6 +58,15 @@ export default function CatStressSignsPage() {
           <a className="headerBtn" href="tel:0436411008">電話する</a>
         </div>
       </header>
+      <nav style={{ background: '#fff9f0', padding: '12px 0', fontSize: '13px', color: '#999' }}>
+        <div className="container">
+          <a href="/" style={{ color: '#999', textDecoration: 'none' }}>ホーム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <a href="/blog" style={{ color: '#999', textDecoration: 'none' }}>コラム</a>
+          <span style={{ margin: '0 8px' }}>›</span>
+          <span style={{ color: '#666' }}>猫のストレスサイン</span>
+        </div>
+      </nav>
       <article className="section warm">
         <div className="container" style={{ maxWidth: '800px' }}>
           <p className="eyebrow">COLUMN</p>
@@ -121,6 +157,7 @@ export default function CatStressSignsPage() {
         </div>
       </article>
       <footer className="footer"><div className="container footerInner"><div><strong>バウ・ミュウ動物病院</strong><p>〒290-0062 千葉県市原市八幡520<br />TEL 0436-41-1008</p></div><small>&copy; Bow-Mew Animal Hospital</small></div></footer>
-    </main>
+      </main>
+    </>
   )
 }
