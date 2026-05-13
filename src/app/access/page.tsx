@@ -5,7 +5,7 @@ import MobileMenu from '@/components/MobileMenu'
 export const metadata: Metadata = {
   title: 'アクセス・診療時間｜市原市の動物病院 バウ・ミュウ動物病院',
   description:
-    '千葉県市原市八幡520 バウ・ミュウ動物病院へのアクセス。JR内房線八幡宿駅東口より徒歩7分。駐車場6台無料完備。診療時間：午前9:00〜12:30/午後15:30〜18:00。日曜祝日も午前診療。',
+    '千葉県市原市八幡520 バウ・ミュウ動物病院へのアクセス。JR内房線八幡宿駅西口より徒歩7分。駐車場6台無料完備。診療時間：午前9:00〜12:30/午後15:30〜18:00。日曜祝日も午前診療。',
   alternates: { canonical: 'https://bowmew-ah.com/access' },
 }
 

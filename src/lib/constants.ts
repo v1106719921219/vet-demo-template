@@ -9,7 +9,7 @@ export const CLINIC = {
   fax: '0436-41-1952',
   zip: '〒290-0062',
   address: '千葉県市原市八幡520',
-  access: 'JR内房線「八幡宿駅」東口より徒歩約7分（500m）',
+  access: 'JR内房線「八幡宿駅」西口より徒歩約7分（500m）',
   parking: '専用駐車場6台完備（無料）',
   icAccess: '館山道 市原ICより約10分',
   lineUrl: 'https://lin.ee/bowmew',

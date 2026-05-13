@@ -68,7 +68,7 @@ const jsonLd = {
   },
   description: SEO.description,
   currenciesAccepted: 'JPY',
-  paymentAccepted: '現金',
+  paymentAccepted: '現金, クレジットカード, 各種キャッシュレス決済',
   parking: CLINIC.parking,
   hasMap: 'https://www.google.com/maps?q=バウミュウ動物病院',
   amenityFeature: [

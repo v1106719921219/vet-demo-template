@@ -30,7 +30,7 @@ export default function Access() {
 
               <dt>電車</dt>
               <dd>
-                JR内房線「八幡宿駅」東口より<br />
+                JR内房線「八幡宿駅」西口より<br />
                 <strong>徒歩 約7分</strong>（500m）
               </dd>
 
