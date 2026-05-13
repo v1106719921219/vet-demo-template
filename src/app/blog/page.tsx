@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { CLINIC } from '@/lib/constants'
 import Link from 'next/link'
+import MobileMenu from '@/components/MobileMenu'
 
 export const metadata: Metadata = {
   title: 'コラム・お知らせ｜市原市の動物病院 バウ・ミュウ動物病院',
@@ -308,7 +309,7 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <main className="site" style={{ overflow: 'visible' }}>
+    <main className="site">
       <header className="header">
         <div className="headerInner">
           <a className="logo" href="/">
@@ -322,6 +323,7 @@ export default function BlogPage() {
             <a href="/access">アクセス</a>
           </nav>
           <a className="headerBtn" href={`tel:${CLINIC.phone.replace(/-/g, '')}`}>電話する</a>
+          <MobileMenu />
         </div>
       </header>
 

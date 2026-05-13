@@ -1,4 +1,5 @@
 import { CLINIC, HOURS } from '@/lib/constants'
+import MobileMenu from '@/components/MobileMenu'
 
 const features = [
   { title: '予約なし・当日受付OK', text: 'お電話やご予約なしでもご来院いただけます。急な体調不良にもすぐ対応いたします。', icon: '🏥' },
@@ -52,12 +53,12 @@ export default function HomePage() {
           <nav className="nav">
             <a href="/about">当院について</a>
             <a href="/services">診療案内</a>
-            <a href="/price">料金</a>
             <a href="/first-visit">初めての方</a>
             <a href="/access">アクセス</a>
             <a href="/blog">コラム</a>
           </nav>
           <a className="headerBtn" href={`tel:${CLINIC.phone.replace(/-/g, '')}`}>電話する</a>
+          <MobileMenu />
         </div>
       </header>
 
@@ -222,7 +223,7 @@ export default function HomePage() {
               <strong style={{ fontSize: '14px' }}>診療</strong>
               <ul style={{ listStyle: 'none', padding: 0, margin: '8px 0', fontSize: '13px', lineHeight: 2, color: 'rgba(255,255,255,0.7)' }}>
                 <li><a href="/services" style={{ color: 'rgba(255,255,255,0.7)' }}>診療案内</a></li>
-                <li><a href="/price" style={{ color: 'rgba(255,255,255,0.7)' }}>料金案内</a></li>
+
                 <li><a href="/first-visit" style={{ color: 'rgba(255,255,255,0.7)' }}>初めての方へ</a></li>
                 <li><a href="/faq" style={{ color: 'rgba(255,255,255,0.7)' }}>よくある質問</a></li>
               </ul>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { CLINIC, HOURS } from '@/lib/constants'
+import MobileMenu from '@/components/MobileMenu'
 
 export const metadata: Metadata = {
   title: '市原市八幡の動物病院｜バウ・ミュウ動物病院｜予約不要・当日受付OK',
@@ -24,6 +25,7 @@ export default function AreaPage() {
             <a href="/access">アクセス</a>
           </nav>
           <a className="headerBtn" href={`tel:${CLINIC.phone.replace(/-/g, '')}`}>電話する</a>
+          <MobileMenu />
         </div>
       </header>
 
