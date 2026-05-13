@@ -8,46 +8,12 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://bowmew-ah.com/price' },
 }
 
-const prices = [
-  {
-    category: '診察料',
-    items: [
-      { name: '初診料', price: '1,500円〜' },
-      { name: '再診料', price: '800円〜' },
-    ],
-  },
-  {
-    category: '予防接種',
-    items: [
-      { name: '犬混合ワクチン（5種）', price: '6,000円〜' },
-      { name: '犬混合ワクチン（8種）', price: '8,000円〜' },
-      { name: '猫混合ワクチン（3種）', price: '4,500円〜' },
-      { name: '狂犬病予防注射', price: '3,000円〜' },
-    ],
-  },
-  {
-    category: 'フィラリア・ノミダニ予防',
-    items: [
-      { name: 'フィラリア予防（1ヶ月分）', price: '1,000円〜' },
-      { name: 'ノミ・マダニ予防（1ヶ月分）', price: '1,500円〜' },
-    ],
-  },
-  {
-    category: '健康診断',
-    items: [
-      { name: '基本健康診断（血液検査）', price: '5,000円〜' },
-      { name: '総合健康診断', price: '15,000円〜' },
-    ],
-  },
-  {
-    category: '避妊・去勢手術',
-    items: [
-      { name: '猫の去勢手術', price: '15,000円〜' },
-      { name: '猫の避妊手術', price: '25,000円〜' },
-      { name: '犬の去勢手術（小型犬）', price: '25,000円〜' },
-      { name: '犬の避妊手術（小型犬）', price: '35,000円〜' },
-    ],
-  },
+const categories = [
+  '診察料',
+  '予防接種',
+  'フィラリア・ノミダニ予防',
+  '健康診断',
+  '避妊・去勢手術',
 ]
 
 export default function PricePage() {
@@ -78,30 +44,25 @@ export default function PricePage() {
           </div>
 
           <div style={{ display: 'grid', gap: '24px', marginTop: '40px' }}>
-            {prices.map((group) => (
-              <article key={group.category} className="featureCard" style={{ textAlign: 'left', padding: '32px' }}>
-                <h2 style={{ fontSize: '20px', marginBottom: '16px', color: '#ff8a3d' }}>{group.category}</h2>
-                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                  <tbody>
-                    {group.items.map((item) => (
-                      <tr key={item.name} style={{ borderBottom: '1px solid #f0e6d8' }}>
-                        <td style={{ padding: '14px 8px', fontSize: '15px' }}>{item.name}</td>
-                        <td style={{ padding: '14px 8px', textAlign: 'right', fontWeight: 700, color: '#333', whiteSpace: 'nowrap' }}>{item.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            {categories.map((category) => (
+              <article key={category} className="featureCard" style={{ textAlign: 'left', padding: '32px' }}>
+                <h2 style={{ fontSize: '20px', marginBottom: '8px', color: '#ff8a3d' }}>{category}</h2>
+                <p style={{ color: '#888', fontSize: '14px' }}>料金の詳細はお電話にてお問い合わせください。</p>
               </article>
             ))}
 
-            <div style={{ padding: '24px', background: '#fff3e8', borderRadius: '16px', lineHeight: 1.8 }}>
-              <strong style={{ color: '#c06a1f' }}>料金に関するご注意</strong>
-              <ul style={{ marginTop: '8px', paddingLeft: '20px', color: '#555', fontSize: '14px' }}>
-                <li>上記は税込の目安料金です。症状・体重・検査内容により異なります。</li>
-                <li>詳しい料金はお電話またはご来院時にお気軽にお尋ねください。</li>
-                <li>お支払いは現金のみとなります。</li>
-                <li>各種ペット保険に対応しています。</li>
-              </ul>
+            <div style={{ padding: '24px', background: '#fff3e8', borderRadius: '16px', lineHeight: 1.8, textAlign: 'center' }}>
+              <strong style={{ color: '#c06a1f', fontSize: '18px' }}>料金についてはお気軽にお問い合わせください</strong>
+              <p style={{ marginTop: '12px', color: '#555', fontSize: '15px' }}>
+                症状・体重・検査内容により料金が異なります。<br />
+                お電話またはご来院時にご案内いたします。
+              </p>
+              <a
+                href={`tel:${CLINIC.phone.replace(/-/g, '')}`}
+                style={{ display: 'inline-block', marginTop: '16px', padding: '14px 40px', background: '#ff8a3d', color: '#fff', borderRadius: '30px', fontWeight: 700, fontSize: '16px' }}
+              >
+                電話で問い合わせる {CLINIC.phone}
+              </a>
             </div>
           </div>
         </div>
