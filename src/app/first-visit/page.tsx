@@ -36,7 +36,7 @@ export default function FirstVisitPage() {
         <div className="container">
           <div className="sectionTitle">
             <p className="eyebrow">FIRST VISIT</p>
-            <h1 style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>初めての方へ｜市原市バウ・ミュウ動物病院</h1>
+            <h1 style={{ fontSize: 'clamp(22px, 4vw, 40px)' }}>初めての方へ｜市原市バウ・ミュウ動物病院</h1>
             <p>当院は<strong>予約不要・当日受付OK</strong>です。お気軽にご来院ください。</p>
           </div>
 

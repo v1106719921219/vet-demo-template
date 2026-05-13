@@ -69,7 +69,7 @@ export default function ServicesPage() {
         <div className="container">
           <div className="sectionTitle">
             <p className="eyebrow">SERVICES</p>
-            <h1 style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>市原市バウ・ミュウ動物病院の診療案内</h1>
+            <h1 style={{ fontSize: 'clamp(22px, 4vw, 40px)' }}>市原市バウ・ミュウ動物病院の診療案内</h1>
             <p>犬・猫の幅広い症状に対応いたします。予約不要・当日受付OKですので、お気軽にご来院ください。</p>
           </div>
 

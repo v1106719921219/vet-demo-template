@@ -36,7 +36,7 @@ export default function AccessPage() {
         <div className="container">
           <div className="sectionTitle">
             <p className="eyebrow">ACCESS</p>
-            <h1 style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>アクセス・診療時間｜市原市バウ・ミュウ動物病院</h1>
+            <h1 style={{ fontSize: 'clamp(22px, 4vw, 40px)' }}>アクセス・診療時間｜市原市バウ・ミュウ動物病院</h1>
             <p>JR八幡宿駅から徒歩7分。駐車場6台無料完備。</p>
           </div>
 

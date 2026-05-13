@@ -62,7 +62,7 @@ export default function FaqPage() {
         <div className="container">
           <div className="sectionTitle">
             <p className="eyebrow">FAQ</p>
-            <h1 style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>よくある質問｜市原市バウ・ミュウ動物病院</h1>
+            <h1 style={{ fontSize: 'clamp(22px, 4vw, 40px)' }}>よくある質問｜市原市バウ・ミュウ動物病院</h1>
             <p>市原市の皆さまからよくいただくご質問にお答えします。</p>
           </div>
           <div style={{ display: 'grid', gap: '16px', marginTop: '40px' }}>

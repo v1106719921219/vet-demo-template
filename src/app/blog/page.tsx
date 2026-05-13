@@ -331,7 +331,7 @@ export default function BlogPage() {
         <div className="container">
           <div className="sectionTitle">
             <p className="eyebrow">COLUMN</p>
-            <h1 style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>コラム・お知らせ｜市原市バウ・ミュウ動物病院</h1>
+            <h1 style={{ fontSize: 'clamp(22px, 4vw, 40px)' }}>コラム・お知らせ｜市原市バウ・ミュウ動物病院</h1>
             <p>犬・猫の健康管理や予防医療について、市原市の動物病院が情報を発信します。</p>
           </div>
 

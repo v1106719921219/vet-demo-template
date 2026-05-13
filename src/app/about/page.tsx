@@ -36,7 +36,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="sectionTitle">
             <p className="eyebrow">ABOUT</p>
-            <h1 style={{ fontSize: 'clamp(28px, 4vw, 40px)' }}>動物病院紹介｜市原市バウ・ミュウ動物病院</h1>
+            <h1 style={{ fontSize: 'clamp(22px, 4vw, 40px)' }}>動物病院紹介｜バウ・ミュウ動物病院</h1>
             <p>市原市八幡で30年以上、地域の犬・猫の健康を見守ってきました。</p>
           </div>
 
